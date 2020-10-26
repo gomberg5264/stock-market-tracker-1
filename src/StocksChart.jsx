@@ -35,14 +35,14 @@ const ChartWrapper = styled(Col)`
   }
 `;
 
-function StocksChart({ historicalData }) {
+function StocksChart({ intradayData }) {
   return (
     <Row>
       <ChartWrapper>
         <HighchartsReact
           highcharts={Highcharts}
           constructorType={"stockChart"}
-          options={options(historicalData)}
+          options={options(intradayData)}
         />
       </ChartWrapper>
     </Row>

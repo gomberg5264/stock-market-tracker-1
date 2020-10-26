@@ -13,6 +13,7 @@
 
 A **React - JavaScript** web application that visualises and compares 4 different stocks.
 
+You can visit the deployed app [here](https://master.d204lp7xahidks.amplifyapp.com/).
 
 ## Installation
 
