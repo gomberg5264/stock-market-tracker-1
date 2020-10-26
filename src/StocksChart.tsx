@@ -10,7 +10,7 @@ type StocksChartProps = {
 };
 
 const ChartWrapper = styled(Col)`
-  margin-top: 2rem;
+  margin-top: 1rem;
   text-align: -webkit-center;
   .highcharts-scrollbar-track {
     fill: transparent;
@@ -41,7 +41,7 @@ const ChartWrapper = styled(Col)`
 
 const StocksChart: FC<StocksChartProps> = ({ intradayData }) => {
   return (
-    <Row>
+    <Row className="m-0">
       <ChartWrapper>
         <HighchartsReact
           highcharts={Highcharts}

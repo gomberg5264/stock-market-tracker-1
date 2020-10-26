@@ -63,45 +63,37 @@ const CandleStickCharts = () => {
       {loading && <p>Loading...</p>}
       {!loading && historicalData.length > 0 && historicalData[0] && (
         <>
-          <Row>
-            <Col key={historicalData[0].name}>
-              <ChartWrapper>
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  constructorType={"stockChart"}
-                  options={options(historicalData[0])}
-                />{" "}
-              </ChartWrapper>
-            </Col>
-            <Col key={historicalData[1].name}>
-              <ChartWrapper>
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  constructorType={"stockChart"}
-                  options={options(historicalData[1])}
-                />
-              </ChartWrapper>
-            </Col>
+          <Row className="m-0 p-0">
+            <ChartWrapper>
+              <HighchartsReact
+                highcharts={Highcharts}
+                constructorType={"stockChart"}
+                options={options(historicalData[0])}
+              />
+            </ChartWrapper>
+            <ChartWrapper>
+              <HighchartsReact
+                highcharts={Highcharts}
+                constructorType={"stockChart"}
+                options={options(historicalData[1])}
+              />
+            </ChartWrapper>
           </Row>
-          <Row>
-            <Col key={historicalData[2].name}>
-              <ChartWrapper>
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  constructorType={"stockChart"}
-                  options={options(historicalData[2])}
-                />
-              </ChartWrapper>
-            </Col>
-            <Col key={historicalData[3].name}>
-              <ChartWrapper>
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  constructorType={"stockChart"}
-                  options={options(historicalData[3])}
-                />
-              </ChartWrapper>
-            </Col>
+          <Row className="m-0 p-0">
+            <ChartWrapper>
+              <HighchartsReact
+                highcharts={Highcharts}
+                constructorType={"stockChart"}
+                options={options(historicalData[2])}
+              />
+            </ChartWrapper>
+            <ChartWrapper>
+              <HighchartsReact
+                highcharts={Highcharts}
+                constructorType={"stockChart"}
+                options={options(historicalData[3])}
+              />
+            </ChartWrapper>
           </Row>
         </>
       )}

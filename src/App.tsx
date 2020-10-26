@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import SummaryCards from "./SummaryCards";
 import StocksChart from "./StocksChart";
 import CandleStickCharts from "./CandleStickCharts";
@@ -32,16 +32,21 @@ function App() {
 
   return (
     <div className="App m-4">
-      <Container style={{ maxWidth: "60rem" }}>
         {loading && <p>Loading...</p>}
         {!loading && intradayData.length > 0 && (
           <>
-            <SummaryCards currentPrices={currentPrices} />
-            <StocksChart intradayData={intradayPrices} />
+            <Row className="mr-0 ml-0 p-0">
+              <Col className="p-0">
+                <SummaryCards currentPrices={currentPrices} />
+                <StocksChart intradayData={intradayPrices} />
+              </Col>
+              <Col className="p-0">
+                <CandleStickCharts />
+              </Col>
+            </Row>
           </>
         )}
-        <CandleStickCharts />
-      </Container>
+      
       {error && error.message}
     </div>
   );

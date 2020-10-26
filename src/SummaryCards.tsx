@@ -35,18 +35,17 @@ const SummaryCards: FC<SummaryCardsProps> = ({ currentPrices }) => {
   }, []);
 
   return (
-    <Row>
+    <Row className="m-0">
       {loading && <p style={{ color: "white" }}>Loading...</p>}
       {!loading &&
         yesterdayClose.length > 0 &&
         currentPrices.map((price, idx) => (
-          <Col key={idx}>
-            <StyledSummaryCard
-              symbol={symbols[idx]}
-              currentPrice={price}
-              yesterdayClose={yesterdayClose[idx]}
-            />
-          </Col>
+          <StyledSummaryCard
+            key={idx}
+            symbol={symbols[idx]}
+            currentPrice={price}
+            yesterdayClose={yesterdayClose[idx]}
+          />
         ))}
       {error && error.message}
     </Row>

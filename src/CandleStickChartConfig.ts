@@ -6,12 +6,16 @@ export default function options(data: {
 }) {
   return {
     chart: {
+      width:250,
+      height:295,
       backgroundColor: "transparent",
       style: {
         fontFamily: "'Open Sans', sans-serif",
       },
     },
-
+    navigator: {
+      enabled: false
+  },
     rangeSelector: {
       buttonTheme: {
         fill: "none",
@@ -83,6 +87,7 @@ export default function options(data: {
             fontSize: 13,
           },
         },
+        visible:false,
         title: {
           text: "OHLC",
         },
@@ -101,6 +106,7 @@ export default function options(data: {
             fontSize: 13,
           },
         },
+        visible:false,
         title: {
           text: "Volume",
         },
@@ -118,7 +124,7 @@ export default function options(data: {
     plotOptions: {
       candlestick: {
         lineColor: data.volumeColour,
-        upLineColor: "silver", // docs
+        upLineColor: "silver", 
         upColor: "silver",
       },
     },

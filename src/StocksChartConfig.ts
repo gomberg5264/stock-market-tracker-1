@@ -37,8 +37,8 @@ export default function options(
       },
     },
     chart: {
-      width: 900,
-      height: 400,
+      width: 680,
+      height: 450,
       backgroundColor: "transparent",
       style: {
         fontFamily: "'Open Sans', sans-serif",

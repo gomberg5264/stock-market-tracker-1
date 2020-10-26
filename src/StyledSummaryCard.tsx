@@ -9,7 +9,8 @@ type SummaryCardProps = {
   currentPrice: number;
 };
 const StyledCard = styled(Card)<any>`
-  max-width: 13rem;
+  width: 10.5rem;
+  height: 7rem;
   background: transparent;
   border: 1px solid #46537d;
   border-radius: 0.7rem;
@@ -45,7 +46,7 @@ const SummaryCard: FC<SummaryCardProps> = ({
   ).toFixed(2);
   const Percentage = () => {
     const percentageString =
-      +changePercentage > 0 ? `+${changePercentage}` : changePercentage;
+      +changePercentage > 0 ? `+${changePercentage}%` : `${changePercentage}%`;
 
     return (
       <b className={`percent ${+changePercentage < 0 && "red"}`}>
@@ -55,7 +56,7 @@ const SummaryCard: FC<SummaryCardProps> = ({
   };
 
   return (
-    <StyledCard className="p-2">
+    <StyledCard className="pt-2 pb-2 pl-1 pr-1 m-1">
       <div>
         <b className="current">{`$${currentPrice}`}</b>
         <b className="symbol">{symbol}</b>
