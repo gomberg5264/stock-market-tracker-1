@@ -1,10 +1,10 @@
 
-![contributors](https://img.shields.io/github/contributors/XandraV/stockmarket-tracker?color=gold)
+![contributors](https://img.shields.io/github/contributors/XandraV/stockmarket-tracker?color=purple)
 ![commit](https://img.shields.io/github/last-commit/XandraV/stockmarket-tracker?color=cyan)
 
 # Stock Market Tracker
 
-![javascript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![typescript](https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
 ![highcharts](https://img.shields.io/badge/-Highcharts.js-48DAD0?style=flat-square)
 ![react](https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white)
 ![styled](https://img.shields.io/badge/-Styled_Components-db7092?style=flat-square&logo=styled-components&logoColor=white)
@@ -12,7 +12,7 @@
 ![bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white)
 
 
-A **React - JavaScript** web application that visualises and compares 4 different stocks.
+A **React - TypeScript** web application that visualises and compares 4 different stocks.
 
 You can visit the deployed app [here](https://master.d204lp7xahidks.amplifyapp.com/).
 
