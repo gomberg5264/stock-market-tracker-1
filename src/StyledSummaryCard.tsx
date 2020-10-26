@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import { Card } from "react-bootstrap";
+import TinyChart from "./TinyChart";
 import styled from "styled-components/macro";
+
 type SummaryCardProps = {
   symbol: string;
   yesterdayClose: number;
@@ -37,11 +39,11 @@ const SummaryCard: FC<SummaryCardProps> = ({
   yesterdayClose,
   currentPrice,
 }) => {
+  const changePercentage = (
+    ((currentPrice - yesterdayClose) * 100) /
+    yesterdayClose
+  ).toFixed(2);
   const Percentage = () => {
-    const changePercentage = (
-      ((currentPrice - yesterdayClose) * 100) /
-      yesterdayClose
-    ).toFixed(2);
     const percentageString =
       +changePercentage > 0 ? `+${changePercentage}` : changePercentage;
 
@@ -59,7 +61,9 @@ const SummaryCard: FC<SummaryCardProps> = ({
         <b className="symbol">{symbol}</b>
       </div>
       <div>
-        <span>little chart</span>
+        <span>
+          <TinyChart positive={ +changePercentage > 0} symbol={symbol} />
+        </span>
         <Percentage />
       </div>
     </StyledCard>
