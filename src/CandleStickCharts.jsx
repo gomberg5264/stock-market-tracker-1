@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Col, Row } from "react-bootstrap";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import options from "./CandleStickChartConfig";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { getHistoricalData } from "./redux/actions/historicalData";
 
 const ChartWrapper = styled.div`
   text-align: -webkit-center;
@@ -31,49 +33,19 @@ const ChartWrapper = styled.div`
   }
 `;
 
-const volColours = {
-  AAPL: "#F74AC1",
-  GOOG: "#31AFD6",
-  MSFT: "#F5A623",
-  TSLA: "#23D984",
-};
 function CandleStickCharts() {
-  const [historicalData, setHistoricalData] = useState([]);
+  const dispatch = useDispatch();
+  const historicalData = useSelector((state) => state.historicalData.data);
+  const loading = useSelector((state) => state.historicalData.loading);
+  const error = useSelector((state) => state.historicalData.error);
+
   useEffect(() => {
-    fetch(
-      `${process.env.REACT_APP_SANDBOX_BASE_URL}stable/stock/market/batch?symbols=aapl,goog,msft,tsla&types=chart&range=6m&token=${process.env.REACT_APP_SANDBOX_API_KEY}`
-    )
-      .then((res) => res.json())
-      .then((historicalData) => {
-        const result = [];
-        for (let name in historicalData) {
-          const volumeColour = volColours[name];
-          const volume = historicalData[name].chart.map((el) => {
-            return [new Date(el.date).getTime(), el.volume];
-          });
-          const ohlc = historicalData[name].chart.map((el) => {
-            //timestamp open high low close
-            return [
-              new Date(el.date).getTime(),
-              el.open,
-              el.high,
-              el.low,
-              el.close,
-            ];
-          });
-          result.push({
-            name,
-            ohlc,
-            volume,
-            volumeColour,
-          });
-        }
-        setHistoricalData(result);
-      });
+    dispatch(getHistoricalData());
   }, []);
   return (
     <div>
-      {historicalData[0] && (
+      {loading && <p>Loading...</p>}
+      {!loading && historicalData.length > 0 && historicalData[0] && (
         <>
           <Row>
             <Col key={historicalData[0].name}>
@@ -117,6 +89,7 @@ function CandleStickCharts() {
           </Row>
         </>
       )}
+      {error && error.message}
     </div>
   );
 }

@@ -1,8 +1,12 @@
 import { combineReducers } from "redux";
 import intradayPrices from "./intradayPrices";
+import yesterdayClosePrices from "./yesterdayClosePrices";
+import historicalData from "./historicalData";
 
 const rootReducer = combineReducers({
-  intradayPrices: intradayPrices,
+  intradayPrices,
+  yesterdayClosePrices,
+  historicalData,
 });
 
 export default rootReducer;

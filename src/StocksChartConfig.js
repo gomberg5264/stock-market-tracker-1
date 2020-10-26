@@ -104,9 +104,9 @@ export default function options(data) {
       {
         name: data[0].name,
         data: data[0].data,
-        color: "#F74AC1",
+        color: "#ED2B88",
         shadow: {
-          color: "#F74AC1",
+          color: "#ED2B88",
           width: 4,
         },
       },
@@ -131,9 +131,9 @@ export default function options(data) {
       {
         name: data[3].name,
         data: data[3].data,
-        color: "#23D984",
+        color: "#9933CC",
         shadow: {
-          color: "#23D984",
+          color: "#9933CC",
           width: 10,
         },
       },

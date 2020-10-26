@@ -6,7 +6,7 @@ export default function options(data) {
         fontFamily: "'Open Sans', sans-serif",
       },
     },
-  
+
     rangeSelector: {
       buttonTheme: {
         fill: "none",
@@ -43,11 +43,6 @@ export default function options(data) {
           type: "month",
           count: 6,
           text: "6m",
-        },
-        {
-          type: "all",
-          count: 1,
-          text: "All",
         },
       ],
       selected: 0,
@@ -118,9 +113,9 @@ export default function options(data) {
     plotOptions: {
       candlestick: {
         lineColor: data.volumeColour,
-        upLineColor: 'silver', // docs
-        upColor: 'silver'
-    }
+        upLineColor: "silver", // docs
+        upColor: "silver",
+      },
     },
 
     series: [

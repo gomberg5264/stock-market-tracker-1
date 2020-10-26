@@ -1,37 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import StyledSummaryCard from "./StyledSummaryCard";
 import { Col, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { getYesterdayClosePrices } from "./redux/actions/yesterdayClosePrices";
 
 const symbols = ["AAPL", "GOOG", "MSFT", "TSLA"];
 
 function SummaryCards({ currentPrices }) {
-  const [yesterdayClose, setYesterdayClose] = useState([]);
+  const dispatch = useDispatch();
+  const yesterdayClose = useSelector(
+    (state) => state.yesterdayClosePrices.prices
+  );
+  const loading = useSelector((state) => state.yesterdayClosePrices.loading);
+  const error = useSelector((state) => state.yesterdayClosePrices.error);
 
   useEffect(() => {
-    fetch(
-      `${process.env.REACT_APP_SANDBOX_BASE_URL}stable/stock/market/batch?symbols=aapl,goog,msft,tsla&types=previous&token=${process.env.REACT_APP_SANDBOX_API_KEY}`
-    )
-      .then((res) => res.json())
-      .then((yesterday) => {
-        const data = [];
-        for (let tick in yesterday) {
-          data.push(yesterday[tick]["previous"]["close"]);
-        }
-        setYesterdayClose(data);
-      });
+    dispatch(getYesterdayClosePrices());
   }, []);
 
   return (
     <Row>
-      {currentPrices.map((price, idx) => (
-        <Col key={idx}>
-          <StyledSummaryCard
-            symbol={symbols[idx]}
-            currentPrice={price}
-            yesterdayClose={yesterdayClose[idx]}
-          />
-        </Col>
-      ))}
+      {loading && <p style={{color:"white"}}>Loading...</p>}
+      {!loading &&
+        yesterdayClose.length > 0 &&
+        currentPrices.map((price, idx) => (
+          <Col key={idx}>
+            <StyledSummaryCard
+              symbol={symbols[idx]}
+              currentPrice={price}
+              yesterdayClose={yesterdayClose[idx]}
+            />
+          </Col>
+        ))}
+      {error && error.message}
     </Row>
   );
 }
