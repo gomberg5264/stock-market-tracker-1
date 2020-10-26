@@ -6,10 +6,10 @@ export function getYesterdayClosePrices() {
   )
     .then((response) => response.json())
     .then((yesterday) => {
-        const data = [];
-        for (let tick in yesterday) {
-          data.push(yesterday[tick]["previous"]["close"]);
-        }
+      const data = [];
+      for (let tick in yesterday) {
+        data.push(yesterday[tick]["previous"]["close"]);
+      }
       return data;
     })
     .catch((error) => {
@@ -17,20 +17,26 @@ export function getYesterdayClosePrices() {
     });
 }
 
-export function* fetchYesterdayClosePrices(action) {
+export function* fetchYesterdayClosePrices() {
   try {
-    const prices = yield call(getYesterdayClosePrices, action.payload);
+    const prices = yield call(getYesterdayClosePrices);
     yield put({
       type: "GET_YESTERDAY_CLOSE_PRICES_SUCCESS",
-      prices
+      prices,
     });
   } catch (e) {
-    yield put({ type: "GET_YESTERDAY_CLOSE_PRICES_FAILED", message: e.message });
+    yield put({
+      type: "GET_YESTERDAY_CLOSE_PRICES_FAILED",
+      message: e.message,
+    });
   }
 }
 
 function* yesterdayClosePricesSaga() {
-  yield takeEvery("GET_YESTERDAY_CLOSE_PRICES_REQUESTED", fetchYesterdayClosePrices);
+  yield takeEvery(
+    "GET_YESTERDAY_CLOSE_PRICES_REQUESTED",
+    fetchYesterdayClosePrices
+  );
 }
 
 export default yesterdayClosePricesSaga;

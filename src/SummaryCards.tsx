@@ -1,18 +1,34 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import StyledSummaryCard from "./StyledSummaryCard";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getYesterdayClosePrices } from "./redux/actions/yesterdayClosePrices";
 
+type SummaryCardsProps = {
+  currentPrices: Array<number>;
+};
+
+interface RootState {
+  yesterdayClosePrices: {
+    prices: Array<number>;
+    loading: boolean;
+    error: { message: string };
+  };
+}
+
 const symbols = ["AAPL", "GOOG", "MSFT", "TSLA"];
 
-function SummaryCards({ currentPrices }) {
+const SummaryCards: FC<SummaryCardsProps> = ({ currentPrices }) => {
   const dispatch = useDispatch();
   const yesterdayClose = useSelector(
-    (state) => state.yesterdayClosePrices.prices
+    (state: RootState) => state.yesterdayClosePrices.prices
   );
-  const loading = useSelector((state) => state.yesterdayClosePrices.loading);
-  const error = useSelector((state) => state.yesterdayClosePrices.error);
+  const loading = useSelector(
+    (state: RootState) => state.yesterdayClosePrices.loading
+  );
+  const error = useSelector(
+    (state: RootState) => state.yesterdayClosePrices.error
+  );
 
   useEffect(() => {
     dispatch(getYesterdayClosePrices());
@@ -20,7 +36,7 @@ function SummaryCards({ currentPrices }) {
 
   return (
     <Row>
-      {loading && <p style={{color:"white"}}>Loading...</p>}
+      {loading && <p style={{ color: "white" }}>Loading...</p>}
       {!loading &&
         yesterdayClose.length > 0 &&
         currentPrices.map((price, idx) => (
@@ -35,6 +51,6 @@ function SummaryCards({ currentPrices }) {
       {error && error.message}
     </Row>
   );
-}
+};
 
 export default SummaryCards;

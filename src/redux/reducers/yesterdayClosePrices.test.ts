@@ -3,12 +3,17 @@ import {
   GET_YESTERDAY_CLOSE_PRICES_SUCCESS,
   GET_YESTERDAY_CLOSE_PRICES_REQUESTED,
   GET_YESTERDAY_CLOSE_PRICES_FAILED,
+  GET_YESTERDAY_CLOSE_PRICES_DUMMY,
 } from "./types";
 
 describe("intradayPrice reducer", () => {
   it("should return the initial state", () => {
-    expect(yesterdayClosePrices(undefined, {})).toEqual({
-      prices: [],
+    expect(
+      yesterdayClosePrices(undefined, {
+        type: GET_YESTERDAY_CLOSE_PRICES_DUMMY,
+      })
+    ).toEqual({
+      prices: {},
       loading: false,
       error: null,
     });
@@ -16,12 +21,12 @@ describe("intradayPrice reducer", () => {
 
   it("should handle GET_YESTERDAY_CLOSE_PRICES_REQUESTED", () => {
     expect(
-        yesterdayClosePrices(
-        { prices: [], loading: false, error: null },
+      yesterdayClosePrices(
+        { prices: {}, loading: false, error: null },
         { type: GET_YESTERDAY_CLOSE_PRICES_REQUESTED }
       )
     ).toEqual({
-      prices: [],
+      prices: {},
       loading: true,
       error: null,
     });
@@ -29,8 +34,8 @@ describe("intradayPrice reducer", () => {
 
   it("should handle GET_YESTERDAY_CLOSE_PRICES_SUCCESS", () => {
     expect(
-        yesterdayClosePrices(
-        { prices: [], loading: false, error: null },
+      yesterdayClosePrices(
+        { prices: {}, loading: false, error: null },
         {
           type: GET_YESTERDAY_CLOSE_PRICES_SUCCESS,
           prices: {
@@ -55,15 +60,15 @@ describe("intradayPrice reducer", () => {
 
   it("should handle GET_YESTERDAY_CLOSE_PRICES_FAILED", () => {
     expect(
-        yesterdayClosePrices(
-        { prices: [], loading: false, error: null },
+      yesterdayClosePrices(
+        { prices: {}, loading: false, error: null },
         {
           type: GET_YESTERDAY_CLOSE_PRICES_FAILED,
           message: "Something went wrong",
         }
       )
     ).toEqual({
-      prices: [],
+      prices: {},
       loading: false,
       error: "Something went wrong",
     });

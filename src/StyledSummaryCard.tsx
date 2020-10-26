@@ -1,8 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import { Card } from "react-bootstrap";
-import styled from "styled-components";
-
-const StyledCard = styled(Card)`
+import styled from "styled-components/macro";
+type SummaryCardProps = {
+  symbol: string;
+  yesterdayClose: number;
+  currentPrice: number;
+};
+const StyledCard = styled(Card)<any>`
   max-width: 13rem;
   background: transparent;
   border: 1px solid #46537d;
@@ -28,17 +32,21 @@ const StyledCard = styled(Card)`
   }
 `;
 
-function SummaryCard({ symbol, yesterdayClose, currentPrice }) {
+const SummaryCard: FC<SummaryCardProps> = ({
+  symbol,
+  yesterdayClose,
+  currentPrice,
+}) => {
   const Percentage = () => {
     const changePercentage = (
       ((currentPrice - yesterdayClose) * 100) /
       yesterdayClose
     ).toFixed(2);
     const percentageString =
-      changePercentage > 0 ? `+${changePercentage}` : changePercentage;
+      +changePercentage > 0 ? `+${changePercentage}` : changePercentage;
 
     return (
-      <b className={`percent ${changePercentage < 0 && "red"}`}>
+      <b className={`percent ${+changePercentage < 0 && "red"}`}>
         {percentageString}
       </b>
     );
@@ -56,6 +64,6 @@ function SummaryCard({ symbol, yesterdayClose, currentPrice }) {
       </div>
     </StyledCard>
   );
-}
+};
 
 export default SummaryCard;

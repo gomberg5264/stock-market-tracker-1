@@ -9,12 +9,14 @@ export function getIntradayPrices() {
       const currentPricesList = [];
       const intradayResult = [];
       for (let name in data) {
-        const priceAndTimestamp = data[name]["intraday-prices"].map((price) => {
-          return [
-            new Date(`${price.date} ${price.minute}`).getTime(),
-            price.close,
-          ];
-        });
+        const priceAndTimestamp = data[name]["intraday-prices"].map(
+          (price: any) => {
+            return [
+              new Date(`${price.date} ${price.minute}`).getTime(),
+              price.close,
+            ];
+          }
+        );
         intradayResult.push({
           name,
           data: priceAndTimestamp,
@@ -30,12 +32,12 @@ export function getIntradayPrices() {
     });
 }
 
-export function* fetchIntradayPrices(action) {
+export function* fetchIntradayPrices() {
   try {
-    const prices = yield call(getIntradayPrices, action.payload);
+    const prices = yield call(getIntradayPrices);
     yield put({
       type: "GET_INTRADAY_PRICES_SUCCESS",
-      prices
+      prices,
     });
   } catch (e) {
     yield put({ type: "GET_INTRADAY_PRICES_FAILED", message: e.message });

@@ -1,25 +1,28 @@
 import * as type from "./types";
 
 const initialState = {
-  data: [],
+  prices: {},
   loading: false,
   error: null,
 };
 
-export default function historicalData(state = initialState, action) {
+export default function yesterdayClosePrices(
+  state = initialState,
+  action: type.YesterdayClosePricesTypes
+) {
   switch (action.type) {
-    case type.GET_HISTORICAL_DATA_REQUESTED:
+    case type.GET_YESTERDAY_CLOSE_PRICES_REQUESTED:
       return {
         ...state,
         loading: true,
       };
-    case type.GET_HISTORICAL_DATA_SUCCESS:
+    case type.GET_YESTERDAY_CLOSE_PRICES_SUCCESS:
       return {
         ...state,
         loading: false,
-        data: action.data,
+        prices: action.prices,
       };
-    case type.GET_HISTORICAL_DATA_FAILED:
+    case type.GET_YESTERDAY_CLOSE_PRICES_FAILED:
       return {
         ...state,
         loading: false,

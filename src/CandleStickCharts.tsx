@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import options from "./CandleStickChartConfig";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { useDispatch, useSelector } from "react-redux";
 import { getHistoricalData } from "./redux/actions/historicalData";
 
@@ -32,12 +32,28 @@ const ChartWrapper = styled.div`
     display: none;
   }
 `;
+interface RootState {
+  historicalData: {
+    data: Array<{
+      name: string;
+      ohlc: Array<object>;
+      volume: Array<object>;
+      volumeColour: string;
+    }>;
+    loading: boolean;
+    error: { message: string };
+  };
+}
 
-function CandleStickCharts() {
+const CandleStickCharts = () => {
   const dispatch = useDispatch();
-  const historicalData = useSelector((state) => state.historicalData.data);
-  const loading = useSelector((state) => state.historicalData.loading);
-  const error = useSelector((state) => state.historicalData.error);
+  const historicalData = useSelector(
+    (state: RootState) => state.historicalData.data
+  );
+  const loading = useSelector(
+    (state: RootState) => state.historicalData.loading
+  );
+  const error = useSelector((state: RootState) => state.historicalData.error);
 
   useEffect(() => {
     dispatch(getHistoricalData());
@@ -92,6 +108,6 @@ function CandleStickCharts() {
       {error && error.message}
     </div>
   );
-}
+};
 
 export default CandleStickCharts;

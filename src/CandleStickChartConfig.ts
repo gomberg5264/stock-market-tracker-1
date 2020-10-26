@@ -1,4 +1,9 @@
-export default function options(data) {
+export default function options(data: {
+  name: string;
+  ohlc: Array<object>;
+  volume: Array<object>;
+  volumeColour: string;
+}) {
   return {
     chart: {
       backgroundColor: "transparent",

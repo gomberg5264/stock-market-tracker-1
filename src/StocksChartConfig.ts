@@ -1,4 +1,6 @@
-export default function options(data) {
+export default function options(
+  data: Array<{ name: string; data: Array<object> }>
+) {
   return {
     title: {
       text: "AAPL-GGOG-MSFT-TSLA",

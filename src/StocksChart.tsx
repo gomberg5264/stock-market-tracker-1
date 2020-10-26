@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { FC } from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import options from "./StocksChartConfig";
 import { Col, Row } from "react-bootstrap";
-import styled from "styled-components";
+import styled from "styled-components/macro";
+
+type StocksChartProps = {
+  intradayData: Array<{ name: string; data: Array<object> }>;
+};
 
 const ChartWrapper = styled(Col)`
   margin-top: 2rem;
@@ -35,7 +39,7 @@ const ChartWrapper = styled(Col)`
   }
 `;
 
-function StocksChart({ intradayData }) {
+const StocksChart: FC<StocksChartProps> = ({ intradayData }) => {
   return (
     <Row>
       <ChartWrapper>
@@ -47,6 +51,6 @@ function StocksChart({ intradayData }) {
       </ChartWrapper>
     </Row>
   );
-}
+};
 
 export default StocksChart;

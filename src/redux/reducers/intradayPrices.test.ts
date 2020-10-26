@@ -3,12 +3,13 @@ import {
   GET_INTRADAY_PRICES_SUCCESS,
   GET_INTRADAY_PRICES_REQUESTED,
   GET_INTRADAY_PRICES_FAILED,
+  GET_INTRADAY_PRICES_DUMMY,
 } from "./types";
 
 describe("intradayPrice reducer", () => {
   it("should return the initial state", () => {
-    expect(intradayPrices(undefined, {})).toEqual({
-      prices: [],
+    expect(intradayPrices(undefined, {type: GET_INTRADAY_PRICES_DUMMY})).toEqual({
+      prices: {},
       loading: false,
       error: null,
     });
@@ -17,11 +18,11 @@ describe("intradayPrice reducer", () => {
   it("should handle GET_INTRADAY_PRICES_REQUESTED", () => {
     expect(
       intradayPrices(
-        { prices: [], loading: false, error: null },
+        { prices: {}, loading: false, error: null },
         { type: GET_INTRADAY_PRICES_REQUESTED }
       )
     ).toEqual({
-      prices: [],
+      prices: {},
       loading: true,
       error: null,
     });
@@ -30,7 +31,7 @@ describe("intradayPrice reducer", () => {
   it("should handle GET_INTRADAY_PRICES_SUCCESS", () => {
     expect(
       intradayPrices(
-        { prices: [], loading: false, error: null },
+        { prices: {}, loading: false, error: null },
         {
           type: GET_INTRADAY_PRICES_SUCCESS,
           prices: {
@@ -56,14 +57,14 @@ describe("intradayPrice reducer", () => {
   it("should handle GET_INTRADAY_PRICES_FAILED", () => {
     expect(
       intradayPrices(
-        { prices: [], loading: false, error: null },
+        { prices: {}, loading: false, error: null },
         {
           type: GET_INTRADAY_PRICES_FAILED,
           message: "Something went wrong",
         }
       )
     ).toEqual({
-      prices: [],
+      prices: {},
       loading: false,
       error: "Something went wrong",
     });

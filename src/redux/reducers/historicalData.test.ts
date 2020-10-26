@@ -3,12 +3,15 @@ import {
   GET_HISTORICAL_DATA_SUCCESS,
   GET_HISTORICAL_DATA_REQUESTED,
   GET_HISTORICAL_DATA_FAILED,
+  GET_HISTORICAL_DATA_DUMMY,
 } from "./types";
 
 describe("intradayPrice reducer", () => {
   it("should return the initial state", () => {
-    expect(historicalData(undefined, {})).toEqual({
-      data: [],
+    expect(
+      historicalData(undefined, { type: GET_HISTORICAL_DATA_DUMMY })
+    ).toEqual({
+      data: {},
       loading: false,
       error: null,
     });
@@ -17,11 +20,11 @@ describe("intradayPrice reducer", () => {
   it("should handle GET_HISTORICAL_DATA_REQUESTED", () => {
     expect(
       historicalData(
-        { data: [], loading: false, error: null },
+        { data: {}, loading: false, error: null },
         { type: GET_HISTORICAL_DATA_REQUESTED }
       )
     ).toEqual({
-      data: [],
+      data: {},
       loading: true,
       error: null,
     });
@@ -30,7 +33,7 @@ describe("intradayPrice reducer", () => {
   it("should handle GET_HISTORICAL_DATA_SUCCESS", () => {
     expect(
       historicalData(
-        { data: [], loading: false, error: null },
+        { data: {}, loading: false, error: null },
         {
           type: GET_HISTORICAL_DATA_SUCCESS,
           data: [["history"], ["current"]],
@@ -46,14 +49,14 @@ describe("intradayPrice reducer", () => {
   it("should handle GET_HISTORICAL_DATA_FAILED", () => {
     expect(
       historicalData(
-        { data: [], loading: false, error: null },
+        { data: {}, loading: false, error: null },
         {
           type: GET_HISTORICAL_DATA_FAILED,
           message: "Something went wrong",
         }
       )
     ).toEqual({
-      data: [],
+      data: {},
       loading: false,
       error: "Something went wrong",
     });
