@@ -1,81 +1,142 @@
 export default function options(data) {
-    return {
-      title: {
-        text: "AAPL-GGOG-MSFT-TSLA",
+  return {
+    title: {
+      text: "AAPL-GGOG-MSFT-TSLA",
+      style: {
+        color: "white",
+        fontWeight: "bold",
+      },
+    },
+    subtitle: {
+      text: "stock price by minute",
+      style: {
+        color: "grey",
+        fontWeight: "bold",
+      },
+    },
+    xAxis: {
+      gapGridLineWidth: 0,
+      labels: {
+        style: {
+          color: "#434271",
+          fontSize: 13,
+        },
+      },
+    },
+    yAxis: {
+      gridLineWidth: 0,
+      gapGridLineWidth: 0,
+      opposite: false,
+      labels: {
+        style: {
+          color: "#434271",
+          fontSize: 13,
+        },
+      },
+    },
+    chart: {
+      width: 900,
+      height: 400,
+      backgroundColor: "transparent",
+      style: {
+        fontFamily: "'Open Sans', sans-serif",
+      },
+    },
+    plotOptions: {
+      series: {
+        connectNulls: true,
+        marker: {
+          enabled: true,
+          radius: 2,
+        },
+        states: {
+          hover: {
+            lineWidth: 4,
+          },
+        },
+      },
+    },
+    tooltip: {
+      crosshairs: false,
+    },
+
+    rangeSelector: {
+      buttonTheme: {
+        fill: "none",
+        stroke: "none",
+        r: 10,
         style: {
           color: "white",
           fontWeight: "bold",
         },
-      },
-      subtitle: {
-        text: "stock price by minute",
-        style: {
-          color: "grey",
-          fontWeight: "bold",
-        },
-      },
-      xAxis: {
-        gapGridLineWidth: 0,
-        labels: {
-          style: {
-            color: "#434271",
-            fontSize: 13,
+        states: {
+          hover: {
+            fill: "grey",
+          },
+          select: {
+            fill: "#31AFD6",
+            style: {
+              color: "white",
+            },
           },
         },
       },
-      yAxis: {
-        gapGridLineWidth: 0,
-        opposite: false,
-        labels: {
-          style: {
-            color: "#434271",
-            fontSize: 13,
-          },
-        },
-      },
-      chart: {
-        width: 900,
-        backgroundColor: "transparent",
-        style: {
-          fontFamily: "'Open Sans', sans-serif",
-        },
-      },
-      colors: ["#F74AC1", "#31AFD6", "#F5A623", "#23D984"],
-      rangeSelector: {
-        buttons: [
-          {
-            type: "hour",
-            count: 1,
-            text: "1h",
-          },
-          {
-            type: "all",
-            count: 1,
-            text: "All",
-          },
-        ],
-        selected: 0,
-        inputEnabled: false,
-      
-      },
-  
-      series: [
+      buttons: [
         {
-          name: data[0].name,
-          data: data[0].data,
+          type: "hour",
+          count: 1,
+          text: "1h",
         },
         {
-          name: data[1].name,
-          data: data[1].data,
-        },
-        {
-          name: data[2].name,
-          data: data[2].data,
-        },
-        {
-          name: data[3].name,
-          data: data[3].data,
+          type: "all",
+          count: 1,
+          text: "All",
         },
       ],
-    };
-  }
+      selected: 0,
+      inputEnabled: false,
+      labelStyle: {
+        color: "transparent",
+      },
+    },
+
+    series: [
+      {
+        name: data[0].name,
+        data: data[0].data,
+        color: "#F74AC1",
+        shadow: {
+          color: "#F74AC1",
+          width: 4,
+        },
+      },
+      {
+        name: data[1].name,
+        data: data[1].data,
+        color: "#31AFD6",
+        shadow: {
+          color: "#31AFD6",
+          width: 10,
+        },
+      },
+      {
+        name: data[2].name,
+        data: data[2].data,
+        color: "#F5A623",
+        shadow: {
+          color: "#F5A623",
+          width: 10,
+        },
+      },
+      {
+        name: data[3].name,
+        data: data[3].data,
+        color: "#23D984",
+        shadow: {
+          color: "#23D984",
+          width: 10,
+        },
+      },
+    ],
+  };
+}

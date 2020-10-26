@@ -1,54 +1,51 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import SummaryCard from "./SummaryCard";
+import { Container } from "react-bootstrap";
+import SummaryCards from "./SummaryCards";
 import StocksChart from "./StocksChart";
-
-const symbols = ["AAPL", "GOOG", "MSFT", "TSLA"];
+import CandleStickCharts from "./CandleStickCharts";
 
 function App() {
-  const [yesterdayClose, setYesterdayClose] = useState([]);
-  const [prices, setPrices] = useState([]);
-
+  const [historicalData, setHistoricalData] = useState([]);
+  const [currentPrices, setCurrentPrices] = useState([]);
+  
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_SANDBOX_BASE_URL}stable/stock/market/batch?symbols=aapl,goog,msft,tsla&types=previous&token=${process.env.REACT_APP_SANDBOX_API_KEY}`
+      `${process.env.REACT_APP_SANDBOX_BASE_URL}stable/stock/market/batch?symbols=aapl,goog,msft,tsla&types=intraday-prices&token=${process.env.REACT_APP_SANDBOX_API_KEY}`
     )
       .then((res) => res.json())
-      .then((yesterday) => {
-        const data = [];
-        for (let tick in yesterday) {
-          data.push(yesterday[tick]["previous"]["close"]);
+      .then((data) => {
+        const currentPricesList = [];
+        const result = [];
+        for (let tick in data) {
+          const priceAndTimestamp = data[tick]["intraday-prices"].map(
+            (price) => {
+              return [
+                new Date(`${price.date} ${price.minute}`).getTime(),
+                price.close,
+              ];
+            }
+          );
+          result.push({
+            name: tick,
+            data: priceAndTimestamp,
+          });
+          currentPricesList.push(priceAndTimestamp[priceAndTimestamp.length - 1][1]);
         }
-        setYesterdayClose(data);
-      });
-    fetch(
-      `${process.env.REACT_APP_SANDBOX_BASE_URL}stable/stock/market/batch?symbols=aapl,goog,msft,tsla&types=price&token=${process.env.REACT_APP_SANDBOX_API_KEY}`
-    )
-      .then((res) => res.json())
-      .then((pricesList) => {
-        setPrices(Object.values(pricesList));
+        setHistoricalData(result);
+        setCurrentPrices(currentPricesList);
       });
   }, []);
 
   return (
     <div className="App m-4">
       <Container style={{ maxWidth: "60rem" }}>
-        <Row>
-          {prices[0] &&
-            prices.map((price, idx) => (
-              <Col key={idx}>
-                <SummaryCard
-                  symbol={symbols[idx]}
-                  currentPrice={price.price}
-                  yesterdayClose={yesterdayClose[idx]}
-                />
-              </Col>
-            ))}
-        </Row>
-        <Row>
-          <StocksChart />
-        </Row>
-        <Row>small charts</Row>
+        {historicalData[0] && (
+          <>
+            <SummaryCards currentPrices={currentPrices} />
+            <StocksChart historicalData={historicalData} />
+          </>
+        )}
+        <CandleStickCharts />
       </Container>
     </div>
   );

@@ -1,68 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+![contributors](https://img.shields.io/github/contributors/XandraV/stockmarket-tracker?color=gold)
+![commit](https://img.shields.io/github/last-commit/XandraV/stockmarket-tracker?color=cyan)
 
-In the project directory, you can run:
+# Stock Market Tracker
 
-### `yarn start`
+![javascript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![highcharts](https://img.shields.io/badge/-Highcharts.js-48DAD0?style=flat-square)
+![react](https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white)
+![styled](https://img.shields.io/badge/-Styled_Components-db7092?style=flat-square&logo=styled-components&logoColor=white)
+![bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+A **React - JavaScript** web application that visualises and compares 4 different stocks.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `yarn build`
+Clone the master branch and then run the following scripts in the project directory:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `npm install` - to install relevant dependencies
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- `npm start` - start the react app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Resources
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+| Description                                                        | Link                                                                      |
+| :----------------------------------------------------------------- | :------------------------------------------------------------------------ |
+| Highcharts - charting library | [highcharts](https://www.highcharts.com/) |
+| Highcharts-React - official Highcharts wrapper for React | [highcharts-react](https://github.com/highcharts/highcharts-react) |
+| React Bootstrap - a popular framework rebuilt for React          | [react bootstrap](https://react-bootstrap.github.io/) |
+| Library that utilises tagged template literals to style React components | [styled components](https://styled-components.com/)                       |
+| React - JavaScript library for building user interfaces            | [create-react-app](https://github.com/facebook/create-react-app)|
+|AWS Amplify |  [Amplify](https://aws.amazon.com/amplify/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Created with create-react-app
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This app was created with [create-react-app](https://github.com/facebook/create-react-app), see usage guidelines in [create-react-app-readme.md](create-react-app-readme.md)
