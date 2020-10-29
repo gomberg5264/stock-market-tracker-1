@@ -12,7 +12,9 @@
 ![bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white)
 
 
-A **React - TypeScript** web application that visualises and compares 4 different stocks.
+A **React - Redux - TypeScript** application that visualises and compares 4 different stocks.
+
+![stock-gif](https://general-gif-bucket.s3.eu-west-2.amazonaws.com/stockmarket.gif)
 
 You can visit the deployed app [here](https://master.d204lp7xahidks.amplifyapp.com/).
 
@@ -33,6 +35,7 @@ Clone the master branch and then run the following scripts in the project direct
 | Highcharts-React - official Highcharts wrapper for React | [highcharts-react](https://github.com/highcharts/highcharts-react) |
 | React Bootstrap - a popular framework rebuilt for React          | [react bootstrap](https://react-bootstrap.github.io/) |
 | Library that utilises tagged template literals to style React components | [styled components](https://styled-components.com/)                       |
+| React Redux        | [react-redux](https://react-redux.js.org/)|
 | React - JavaScript library for building user interfaces            | [create-react-app](https://github.com/facebook/create-react-app)|
 |AWS Amplify |  [Amplify](https://aws.amazon.com/amplify/)
 

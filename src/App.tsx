@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import SummaryCards from "./SummaryCards";
 import StocksChart from "./StocksChart";
 import CandleStickCharts from "./CandleStickCharts";
