@@ -12,7 +12,7 @@
 ![bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white)
 
 
-A **React - Redux - TypeScript** application that visualises and compares 4 different stocks.
+A **React - Redux - TypeScript** application that visualises and compares prices of 4 different stocks. This project is using the [IEX Cloud Financial Data APIs](https://iexcloud.io/) to access live and historical data on stocks.
 
 ![stock-gif](https://general-gif-bucket.s3.eu-west-2.amazonaws.com/stockmarket.gif)
 
