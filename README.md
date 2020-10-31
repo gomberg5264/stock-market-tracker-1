@@ -18,6 +18,8 @@ A **React - Redux - TypeScript** application that visualises real time intraday 
 
 You can visit the deployed app [here](https://master.d204lp7xahidks.amplifyapp.com/).
 
+Unit tests are automated via GitHub Actions.
+
 ## Installation
 
 Clone the master branch and then run the following scripts in the project directory:
@@ -25,6 +27,8 @@ Clone the master branch and then run the following scripts in the project direct
 - `npm install` - to install relevant dependencies
 
 - `npm start` - start the react app
+
+- `npm test` - run unit tests
 
 
 ## Resources
