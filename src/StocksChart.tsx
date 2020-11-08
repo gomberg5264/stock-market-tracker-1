@@ -10,6 +10,8 @@ type StocksChartProps = {
 };
 
 const ChartWrapper = styled(Col)`
+  background: transparent;
+  border-radius: 1rem;
   margin-top: 1rem;
   text-align: -webkit-center;
   .highcharts-scrollbar-track {
@@ -21,7 +23,7 @@ const ChartWrapper = styled(Col)`
   .highcharts-scrollbar-thumb {
     rx: 10;
     ry: 10;
-    fill: #3494c5;
+    fill: #7081b6;
     stroke-width: 0;
   }
   .highcharts-scrollbar-rifles {

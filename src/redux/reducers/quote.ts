@@ -1,28 +1,28 @@
 import * as type from "./types";
 
 const initialState = {
-  prices: {},
+  data: [],
   loading: false,
   error: null,
 };
 
-export default function yesterdayClosePrices(
+export default function quote(
   state = initialState,
-  action: type.YesterdayClosePricesTypes
+  action: type.QuoteTypes
 ) {
   switch (action.type) {
-    case type.GET_YESTERDAY_CLOSE_PRICES_REQUESTED:
+    case type.GET_QUOTE_REQUESTED:
       return {
         ...state,
         loading: true,
       };
-    case type.GET_YESTERDAY_CLOSE_PRICES_SUCCESS:
+    case type.GET_QUOTE_SUCCESS:
       return {
         ...state,
         loading: false,
-        prices: action.prices,
+        data: action.data,
       };
-    case type.GET_YESTERDAY_CLOSE_PRICES_FAILED:
+    case type.GET_QUOTE_FAILED:
       return {
         ...state,
         loading: false,

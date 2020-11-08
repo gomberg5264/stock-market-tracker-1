@@ -2,10 +2,11 @@ import { call, put, takeEvery } from "redux-saga/effects";
 
 export function getIntradayPrices() {
   return fetch(
-    `${process.env.REACT_APP_SANDBOX_BASE_URL}stable/stock/market/batch?symbols=aapl,goog,msft,tsla&types=intraday-prices&token=${process.env.REACT_APP_SANDBOX_API_KEY}`
+    `${process.env.REACT_APP_SANDBOX_BASE_URL}stable/stock/market/batch?symbols=mcd,coke,fb,race,msft,dg&types=intraday-prices&token=${process.env.REACT_APP_SANDBOX_API_KEY}`
   )
     .then((response) => response.json())
     .then((data) => {
+      console.log(data)
       const currentPricesList = [];
       const intradayResult = [];
       for (let name in data) {

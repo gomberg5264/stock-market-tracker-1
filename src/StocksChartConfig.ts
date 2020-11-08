@@ -2,25 +2,11 @@ export default function options(
   data: Array<{ name: string; data: Array<object> }>
 ) {
   return {
-    title: {
-      text: "AAPL-GGOG-MSFT-TSLA",
-      style: {
-        color: "white",
-        fontWeight: "bold",
-      },
-    },
-    subtitle: {
-      text: "stock price by minute",
-      style: {
-        color: "grey",
-        fontWeight: "bold",
-      },
-    },
     xAxis: {
       gapGridLineWidth: 0,
       labels: {
         style: {
-          color: "#434271",
+          color: "white",
           fontSize: 13,
         },
       },
@@ -29,19 +15,36 @@ export default function options(
       gridLineWidth: 0,
       gapGridLineWidth: 0,
       opposite: false,
-      labels: {
-        style: {
-          color: "#434271",
-          fontSize: 13,
-        },
-      },
+      labels:false,
     },
     chart: {
-      width: 680,
-      height: 450,
+      width: 1200,
+      height: 400,
       backgroundColor: "transparent",
       style: {
         fontFamily: "'Open Sans', sans-serif",
+      },
+    },
+    navigator: {
+      adaptToUpdatedData: true,
+      maskFill: 'rgba(255, 255, 255, 0.1)',
+      maskInside: true,
+      outlineWidth: 0,
+      handles: {
+        backgroundColor: '#FFFFFF',
+        borderColor: '#D1D1D1',
+      },
+      series: {
+        type: 'areaspline',
+        fillOpacity: 1,
+        lineWidth: 0,
+        color:'white',
+      },
+      xAxis: {
+        gridLineWidth: 0,
+        labels: {
+          enabled: false
+        }
       },
     },
     plotOptions: {
@@ -108,8 +111,8 @@ export default function options(
         data: data[0].data,
         color: "#ED2B88",
         shadow: {
-          color: "#ED2B88",
-          width: 4,
+          color: "lightblue",
+          width: 5,
         },
       },
       {
@@ -118,7 +121,7 @@ export default function options(
         color: "#31AFD6",
         shadow: {
           color: "#31AFD6",
-          width: 10,
+          width: 5,
         },
       },
       {
@@ -127,16 +130,34 @@ export default function options(
         color: "#F5A623",
         shadow: {
           color: "#F5A623",
-          width: 10,
+          width: 5,
         },
       },
       {
         name: data[3].name,
         data: data[3].data,
-        color: "#9933CC",
+        color: "#9999FF",
         shadow: {
-          color: "#9933CC",
-          width: 10,
+          color: "#9999FF",
+          width: 5,
+        },
+      },
+      {
+        name: data[4].name,
+        data: data[4].data,
+        color: "#75f3c5",
+        shadow: {
+          color: "#75f3c5",
+          width: 5,
+        },
+      },
+      {
+        name: data[5].name,
+        data: data[5].data,
+        color: "orange",
+        shadow: {
+          color: "orange",
+          width: 5,
         },
       },
     ],
