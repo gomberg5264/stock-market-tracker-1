@@ -23,25 +23,27 @@ const SummaryCards: FC<SummaryCardsProps> = ({ currentPrices }) => {
   const quoteData: any = useSelector((state: RootState) => state.quote.data);
   const loading = useSelector((state: RootState) => state.quote.loading);
   const error = useSelector((state: RootState) => state.quote.error);
- 
+
   useEffect(() => {
     dispatch(getQuote());
   }, []);
 
   return (
     <Row className="m-0" style={{ width: "100%", flexWrap: "unset" }}>
-      {loading && <p style={{ color: "white" }}>Loading...</p>}
+      {loading && <div />}
       {!loading &&
-        quoteData.map((q: { changePercent: string, companyName:string }, idx: number) => (
-          <Col key={idx} className="pl-0 pr-0">
-            <StyledSummaryCard  
-              symbol={symbols[idx]}
-              currentPrice={currentPrices[idx]}
-              changePercent={q["changePercent"]}
-              companyName={q["companyName"]}
-            />
-          </Col>
-        ))}
+        quoteData.map(
+          (q: { changePercent: string; companyName: string }, idx: number) => (
+            <Col key={idx} className="pl-0 pr-0">
+              <StyledSummaryCard
+                symbol={symbols[idx]}
+                currentPrice={currentPrices[idx]}
+                changePercent={q["changePercent"]}
+                companyName={q["companyName"]}
+              />
+            </Col>
+          )
+        )}
       {error && error.message}
     </Row>
   );

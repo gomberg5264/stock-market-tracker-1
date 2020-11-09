@@ -1,12 +1,34 @@
 import React, { useEffect } from "react";
 import AppBar from "./AppBar";
+import FormattedDate from "./FormattedDate";
 import { Card, Col, Row } from "react-bootstrap";
 import CandleStickCharts from "./CandleStickCharts";
 import { useDispatch, useSelector } from "react-redux";
 import { getIntradayPrices } from "./redux/actions/intradayPrices";
 import MiniStocksChart from "./MiniStockChart";
 import styled from "styled-components/macro";
+import Loading from "./Loading";
 
+const TypingEffect = `
+  width:0;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation-name: typing;
+  animation-duration: 3s; 
+  animation-timing-function: steps(60, end); 
+  animation-fill-mode: forwards;
+  
+  /* The typing effect */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+`;
 const StyledCard = styled(Card)<any>`
   background: #30437f;
   border: 2px solid #8b99c3;
@@ -19,25 +41,60 @@ const StyledCard = styled(Card)<any>`
   .company {
     font-size: 1.25rem;
     font-weight: bold;
+    ${TypingEffect}
   }
   .price {
     font-size: 2rem;
     font-weight: bold;
+    ${TypingEffect}
+    animation-delay: 1s;
   }
 
   .percent {
     font-size: 1rem;
     color: #23d984;
+    ${TypingEffect}
+    animation-delay: 1s;
   }
   .red {
     color: #d00000;
   }
   .date {
     color: #ffe484;
+    ${TypingEffect}
+    animation-delay: 2s;
   }
   .market {
     float: right;
   }
+
+  @-webkit-keyframes fade-in-top {
+    0% {
+      -webkit-transform: translateY(-50px);
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-top {
+    0% {
+      -webkit-transform: translateY(-50px);
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  -webkit-animation: fade-in-top 1s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+  animation: fade-in-top 1s cubic-bezier(0.645, 0.045, 0.355, 1) both;
 `;
 
 interface QuoteRootState {
@@ -59,7 +116,6 @@ interface IntradayRootState {
 }
 function InfoPage() {
   const dispatch = useDispatch();
-
   const intradayData = useSelector(
     (state: IntradayRootState) => state.intradayPrices.prices
   );
@@ -78,7 +134,7 @@ function InfoPage() {
   const intradayPrices = intradayData[0].filter(
     (prices: any) => prices.name === selectedStockName
   )[0];
-  
+
   const loading = useSelector((state: QuoteRootState) => state.quote.loading);
   const error = useSelector((state: QuoteRootState) => state.quote.error);
 
@@ -119,8 +175,8 @@ function InfoPage() {
     <>
       <AppBar />
       <div className="App mr-4 ml-4 mt-2">
-        {loading && <p>Loading...</p>}
-        {!loading && quoteData.length > 0 && (
+        {loading && <Loading />}
+        {!loading && selectedStockQuoteData && (
           <>
             <Row className="mr-0 ml-0 p-0">
               <Col className="p-0">
@@ -135,15 +191,15 @@ function InfoPage() {
                         ${selectedStockQuoteData.latestPrice} <Change />
                         <ChangePercentage />
                       </div>
-                      <div className="date">08 Novemeber 2020</div>
+                      <FormattedDate />
                     </Col>
                     <Col>
                       <MiniStocksChart intradayData={intradayPrices} />
                       <span className="market">
-                        Market is{" "}
+                        US Market is{" "}
                         {selectedStockQuoteData.isUSMarketOpen
-                          ? "open"
-                          : "closed"}
+                          ? "Open"
+                          : "Closed"}
                       </span>
                     </Col>
                   </Row>
@@ -153,7 +209,6 @@ function InfoPage() {
             </Row>
           </>
         )}
-
         {error && error.message}
       </div>
     </>

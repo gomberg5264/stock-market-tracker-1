@@ -6,6 +6,7 @@ const AppBar = () => (
   <Navbar
     style={{
       backgroundImage: "linear-gradient(#212e58, rgb(74, 95, 162))",
+      width: window.innerWidth,
     }}
   >
     <Nav.Link href="/">

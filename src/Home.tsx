@@ -6,10 +6,15 @@ import StocksChart from "./StocksChart";
 import { useDispatch, useSelector } from "react-redux";
 import { getIntradayPrices } from "./redux/actions/intradayPrices";
 import styled from "styled-components/macro";
-
+import Loading from "./Loading";
 const HomeWrapper = styled.div`
-  background: #4A5FA2;
+  background: #4a5fa2;
   height: ${window.innerHeight};
+  display: grid;
+  .App {
+    display: inline-block;
+    text-align: center;
+  }
 `;
 
 interface RootState {
@@ -39,7 +44,7 @@ function Home() {
     <HomeWrapper>
       <AppBar />
       <div className="App mr-4 ml-4 mt-2">
-        {loading && <p>Loading...</p>}
+        {loading && <Loading />}
         {!loading && intradayData.length > 0 && (
           <Row className="mr-0 ml-0 p-0">
             <Col className="p-0">

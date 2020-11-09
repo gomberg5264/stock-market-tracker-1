@@ -5,6 +5,7 @@ import options from "./CandleStickChartConfig";
 import styled from "styled-components/macro";
 import { useDispatch, useSelector } from "react-redux";
 import { getHistoricalData } from "./redux/actions/historicalData";
+import Loading from "./Loading";
 
 const ChartWrapper = styled.div`
   text-align: -webkit-center;
@@ -30,6 +31,33 @@ const ChartWrapper = styled.div`
   .highcharts-credits {
     display: none;
   }
+  @-webkit-keyframes fade-in-left {
+    0% {
+      -webkit-transform: translateX(-50px);
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-left {
+    0% {
+      -webkit-transform: translateX(-50px);
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  -webkit-animation: fade-in-left 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in-left 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 `;
 interface RootState {
   historicalData: {
@@ -64,7 +92,7 @@ const CandleStickCharts = () => {
 
   return (
     <div>
-      {loading && <p>Loading...</p>}
+      {loading && <Loading/>}
       {!loading && historical.length > 0 && historical[0] && (
         <>
           <ChartWrapper>
