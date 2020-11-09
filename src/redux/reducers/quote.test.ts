@@ -13,7 +13,7 @@ describe("quote reducer", () => {
         type: GET_QUOTE_DUMMY,
       })
     ).toEqual({
-      data: {},
+      data: [],
       loading: false,
       error: null,
     });
@@ -22,11 +22,11 @@ describe("quote reducer", () => {
   it("should handle GET_QUOTE_REQUESTED", () => {
     expect(
       quote(
-        { data: {}, loading: false, error: null },
+        { data: [], loading: false, error: null },
         { type: GET_QUOTE_REQUESTED }
       )
     ).toEqual({
-      data: {},
+      data: [],
       loading: true,
       error: null,
     });
@@ -35,24 +35,14 @@ describe("quote reducer", () => {
   it("should handle GET_QUOTE_SUCCESS", () => {
     expect(
       quote(
-        { data: {}, loading: false, error: null },
+        { data: [], loading: false, error: null },
         {
           type: GET_QUOTE_SUCCESS,
-          data: {
-            AAPL: {},
-            GOOG: {},
-            MSFT: {},
-            TSLA: {},
-          },
+          data: [{}, {}, {}, {}],
         }
       )
     ).toEqual({
-      data: {
-        AAPL: {},
-        GOOG: {},
-        MSFT: {},
-        TSLA: {},
-      },
+      data: [{}, {}, {}, {}],
       loading: false,
       error: null,
     });
@@ -61,14 +51,14 @@ describe("quote reducer", () => {
   it("should handle GET_QUOTE_FAILED", () => {
     expect(
       quote(
-        { data: {}, loading: false, error: null },
+        { data: [], loading: false, error: null },
         {
           type: GET_QUOTE_FAILED,
           message: "Something went wrong",
         }
       )
     ).toEqual({
-      data: {},
+      data: [],
       loading: false,
       error: "Something went wrong",
     });
