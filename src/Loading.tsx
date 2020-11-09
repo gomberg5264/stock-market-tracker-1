@@ -4,8 +4,6 @@ const Wrapper = styled.div`
   text-align: center;
   width: 250px;
   display: inline-block;
-
-
   .loader {
     position: absolute;
     height: 20px;
