@@ -14,7 +14,7 @@
 
 A **React - Redux - TypeScript** application that visualises real time intraday and historical stock data. This project is using the [IEX Cloud Financial Data APIs](https://iexcloud.io/) to access live and historical data on stocks.
 
-![stock-gif](https://general-gif-bucket.s3.eu-west-2.amazonaws.com/stockmarket.gif)
+![stock-gif](https://general-gif-bucket.s3.eu-west-2.amazonaws.com/stocks.gif)
 
 You can visit the deployed app [here](https://master.d204lp7xahidks.amplifyapp.com/).
 
