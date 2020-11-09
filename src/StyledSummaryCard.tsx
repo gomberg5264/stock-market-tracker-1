@@ -8,25 +8,26 @@ import styled from "styled-components/macro";
 
 type SummaryCardProps = {
   symbol: string;
-  previousClose: number;
+  changePercent: string;
   currentPrice: number;
+  companyName: string;
 };
 const StyledCard = styled(Card)<any>`
-  width: 10.5rem;
-  height: 7rem;
+  width: 12.5rem;
+  height: 9rem;
   background-image: linear-gradient(#4a5fa2c4, #4a5fa2);
   border: transparent;
   color: white;
-  .current {
+  .price {
     font-size: 1.3rem;
+  }
+  .company {
+    font-size: 0.8rem;
   }
   .symbol {
     font-size: 0.9rem;
     margin-left: 1rem;
     color: #18389c;
-  }
-  div {
-    text-align: center;
   }
   .percent {
     font-size: 0.8rem;
@@ -36,28 +37,26 @@ const StyledCard = styled(Card)<any>`
     color: red;
   }
   :hover {
-    box-shadow: 0px 0px 5px #00ffff;
-    border: 1px solid #00ffff;
+    box-shadow: 0px 0px 15px white;
+    border: 1px solid white;
     cursor: pointer;
   }
 `;
 
 const SummaryCard: FC<SummaryCardProps> = ({
   symbol,
-  previousClose,
+  changePercent,
   currentPrice,
+  companyName,
 }) => {
   const dispatch = useDispatch();
-  const changePercentage = (
-    ((currentPrice - previousClose) * 100) /
-    previousClose
-  ).toFixed(2);
+
   const Percentage = () => {
     const percentageString =
-      +changePercentage > 0 ? `+${changePercentage}%` : `${changePercentage}%`;
+      +changePercent > 0 ? `+${changePercent}%` : `${changePercent}%`;
 
     return (
-      <b className={`percent ${+changePercentage < 0 && "red"}`}>
+      <b className={`percent ${+changePercent < 0 && "red"}`}>
         {percentageString}
       </b>
     );
@@ -66,18 +65,19 @@ const SummaryCard: FC<SummaryCardProps> = ({
   return (
     <Link to="/info" style={{ textDecoration: "none" }}>
       <StyledCard
-        className="pt-2 pb-2 pl-1 pr-1 m-1"
+        className="pt-3 pb-2 pl-3 pr-1"
         onClick={() => {
           dispatch(updateStock(symbol));
         }}
       >
+        <b className="company">{companyName}</b>
         <div>
-          <b className="current">{`$${currentPrice}`}</b>
+          <b className="price">{`$${currentPrice}`}</b>
           <b className="symbol">{symbol}</b>
         </div>
         <div>
           <span>
-            <TinyChart positive={+changePercentage > 0} symbol={symbol} />
+            <TinyChart positive={+changePercent > 0} symbol={symbol} />
           </span>
           <Percentage />
         </div>

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import options from "./CandleStickChartConfig";
@@ -18,7 +17,7 @@ const ChartWrapper = styled.div`
   .highcharts-scrollbar-thumb {
     rx: 10;
     ry: 10;
-    fill: #3494c5;
+    fill: #7081b6;
     stroke-width: 0;
   }
   .highcharts-scrollbar-rifles {
@@ -34,22 +33,26 @@ const ChartWrapper = styled.div`
 `;
 interface RootState {
   historicalData: {
-    data: Array<{
-      name: string;
-      ohlc: Array<object>;
-      volume: Array<object>;
-      volumeColour: string;
-    }>;
+    data: any;
     loading: boolean;
     error: { message: string };
   };
 }
+interface StockRootState {
+  stock: { name: string };
+}
 
 const CandleStickCharts = () => {
   const dispatch = useDispatch();
-  const historicalData = useSelector(
+  const historical = useSelector(
     (state: RootState) => state.historicalData.data
   );
+  const stockName = useSelector((state: StockRootState) => state.stock.name);
+
+  const selectedStockHistoricalData = historical.filter(
+    (stock: any) => stock.name === stockName
+  )[0];
+
   const loading = useSelector(
     (state: RootState) => state.historicalData.loading
   );
@@ -58,43 +61,19 @@ const CandleStickCharts = () => {
   useEffect(() => {
     dispatch(getHistoricalData());
   }, []);
+
   return (
     <div>
       {loading && <p>Loading...</p>}
-      {!loading && historicalData.length > 0 && historicalData[0] && (
+      {!loading && historical.length > 0 && historical[0] && (
         <>
-          <Row className="m-0 p-0">
-            <ChartWrapper>
-              <HighchartsReact
-                highcharts={Highcharts}
-                constructorType={"stockChart"}
-                options={options(historicalData[0])}
-              />
-            </ChartWrapper>
-            <ChartWrapper>
-              <HighchartsReact
-                highcharts={Highcharts}
-                constructorType={"stockChart"}
-                options={options(historicalData[1])}
-              />
-            </ChartWrapper>
-          </Row>
-          <Row className="m-0 p-0">
-            <ChartWrapper>
-              <HighchartsReact
-                highcharts={Highcharts}
-                constructorType={"stockChart"}
-                options={options(historicalData[2])}
-              />
-            </ChartWrapper>
-            <ChartWrapper>
-              <HighchartsReact
-                highcharts={Highcharts}
-                constructorType={"stockChart"}
-                options={options(historicalData[3])}
-              />
-            </ChartWrapper>
-          </Row>
+          <ChartWrapper>
+            <HighchartsReact
+              highcharts={Highcharts}
+              constructorType={"stockChart"}
+              options={options(selectedStockHistoricalData)}
+            />
+          </ChartWrapper>
         </>
       )}
       {error && error.message}

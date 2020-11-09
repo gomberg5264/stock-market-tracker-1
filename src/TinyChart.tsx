@@ -17,7 +17,7 @@ let volColours = {
 const TinyChart: FC<TinyChartProps> = ({ positive, symbol }) => {
   return (
     <svg
-      width={100}
+      width={90}
       height={50}
       viewBox={"-10 20 130 50"}
       style={{ overflow: "visible", margin: "5px", marginTop: "13px" }}
@@ -37,14 +37,6 @@ const TinyChart: FC<TinyChartProps> = ({ positive, symbol }) => {
       </defs>
       {positive && (
         <g transform={"translate(15,-10)"}>
-          {/* <path
-            d="M0,80 C10,50 30,30 50,50 C50,50 70,90 100,30"
-            fill="none"
-            stroke={(volColours as any)[symbol]}
-            opacity={0.9}
-            strokeWidth={6}
-            transform="translate(50,0)"
-          /> */}
           <circle
             cx={100}
             cy={40}
@@ -112,15 +104,7 @@ const TinyChart: FC<TinyChartProps> = ({ positive, symbol }) => {
       )}
       {!positive && (
         <g transform={"translate(15 -10)"}>
-          <circle cx={70} cy={70} r={50} fill="url(#gradient1)" opacity={0.4} />
-          {/* <path
-            d="M0,30 C10,50 30,30 50,50 C50,50 60,60 70,70"
-            fill="none"
-            stroke={(volColours as any)[symbol]}
-            opacity={0.9}
-            strokeWidth={6}
-            transform="translate(50,0)"
-          /> */}
+          <circle cx={70} cy={70} r={40} fill="url(#gradient1)" opacity={0.4} />
           <path
             d="M0,30 L10,50 L30,30 L70,70"
             fill="none"

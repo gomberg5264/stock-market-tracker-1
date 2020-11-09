@@ -2,12 +2,11 @@ export default function options(data: {
   name: string;
   ohlc: Array<object>;
   volume: Array<object>;
-  volumeColour: string;
 }) {
   return {
     chart: {
-      width:250,
-      height:295,
+      width:1200,
+      height:380,
       backgroundColor: "transparent",
       style: {
         fontFamily: "'Open Sans', sans-serif",
@@ -53,19 +52,16 @@ export default function options(data: {
           count: 6,
           text: "6m",
         },
+        {
+          type: "year",
+          count: 1,
+          text: "1y",
+        },
       ],
-      selected: 0,
+      selected: 1,
       inputEnabled: false,
       labelStyle: {
         color: "transparent",
-      },
-    },
-
-    title: {
-      text: `${data.name} Historical`,
-      style: {
-        color: "white",
-        fontWeight: "bold",
       },
     },
     xAxis: {
@@ -123,9 +119,9 @@ export default function options(data: {
 
     plotOptions: {
       candlestick: {
-        lineColor: data.volumeColour,
-        upLineColor: "silver", 
-        upColor: "silver",
+        lineColor: "#18DFF6",
+        upLineColor: "#FF4088", 
+        upColor: "transparent",
       },
     },
 
@@ -134,9 +130,9 @@ export default function options(data: {
         type: "candlestick",
         name: data.name,
         data: data.ohlc,
-        color: data.volumeColour,
+        color: "transparent",
         shadow: {
-          color: data.volumeColour,
+          color: "#18DFF6",
           width: 4,
         },
       },
@@ -145,9 +141,9 @@ export default function options(data: {
         name: "Volume",
         data: data.volume,
         yAxis: 1,
-        color: data.volumeColour,
+        color: "#75f3c5",
         shadow: {
-          color: data.volumeColour,
+          color: "#75f3c5",
           width: 4,
         },
       },

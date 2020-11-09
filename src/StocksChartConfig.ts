@@ -19,7 +19,7 @@ export default function options(
     },
     chart: {
       width: 1200,
-      height: 400,
+      height: 380,
       backgroundColor: "transparent",
       style: {
         fontFamily: "'Open Sans', sans-serif",

@@ -6,7 +6,6 @@ export function getIntradayPrices() {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
       const currentPricesList = [];
       const intradayResult = [];
       for (let name in data) {

@@ -38,7 +38,7 @@ function Home() {
   return (
     <HomeWrapper>
       <AppBar />
-      <div className="App m-4">
+      <div className="App mr-4 ml-4 mt-2">
         {loading && <p>Loading...</p>}
         {!loading && intradayData.length > 0 && (
           <Row className="mr-0 ml-0 p-0">
