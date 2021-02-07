@@ -1,5 +1,3 @@
-
-![contributors](https://img.shields.io/github/contributors/XandraV/stockmarket-tracker?color=purple)
 ![commit](https://img.shields.io/github/last-commit/XandraV/stockmarket-tracker?color=cyan)
 ![unit](https://github.com/XandraV/stockmarket-tracker/workflows/Stock%20Market%20unit%20tests/badge.svg)
 
