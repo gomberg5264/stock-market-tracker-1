@@ -1,8 +1,14 @@
-import { all } from 'redux-saga/effects'
+import { all } from "redux-saga/effects";
+import registerSaga from "./registerUserSaga";
+import loginSaga from "./loginUserSaga";
+import loadUserSaga from "./loadUserSaga";
 import intradayPricesSaga from "./intradayPricesSaga";
-import quoteSaga from "./quoteSaga";
-import historicaldataSaga from "./historicalDataSaga";
 
 export default function* rootSaga() {
-  yield all([intradayPricesSaga(), quoteSaga(), historicaldataSaga()]);
+  yield all([
+    registerSaga(),
+    loginSaga(),
+    loadUserSaga(),
+    intradayPricesSaga(),
+  ]);
 }

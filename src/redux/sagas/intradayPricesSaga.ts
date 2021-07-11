@@ -32,7 +32,7 @@ export function getIntradayPrices() {
     });
 }
 
-export function* fetchIntradayPrices() {
+export function* fetchIntradayPrices(): any {
   try {
     const prices = yield call(getIntradayPrices);
     yield put({

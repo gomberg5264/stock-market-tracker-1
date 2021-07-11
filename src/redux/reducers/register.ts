@@ -1,28 +1,33 @@
-import * as type from "./types";
+import {
+  RegisterUserTypes,
+  REGISTER_USER_REQUESTED,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_FAILED,
+} from "./types";
 
 const initialState = {
-  data: [],
   loading: false,
   error: null,
+  registered: false
 };
 
-export default function historicalData(
+export default function register(
   state = initialState,
-  action: type.HistoricalDataTypes
+  action: RegisterUserTypes
 ) {
   switch (action.type) {
-    case type.GET_HISTORICAL_DATA_REQUESTED:
+    case REGISTER_USER_REQUESTED:
       return {
         ...state,
         loading: true,
       };
-    case type.GET_HISTORICAL_DATA_SUCCESS:
+    case REGISTER_USER_SUCCESS:
       return {
         ...state,
         loading: false,
-        data: action.data,
+        registered: true,
       };
-    case type.GET_HISTORICAL_DATA_FAILED:
+    case REGISTER_USER_FAILED:
       return {
         ...state,
         loading: false,

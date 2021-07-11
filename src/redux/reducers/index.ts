@@ -1,14 +1,14 @@
 import { combineReducers } from "redux";
+import register from "./register";
+import login from "./login";
+import loadUser from "./loadUser";
 import intradayPrices from "./intradayPrices";
-import quote from "./quote";
-import stock from "./stock";
-import historicalData from "./historicalData";
 
 const rootReducer = combineReducers({
+  register,
+  login,
+  loadUser,
   intradayPrices,
-  quote,
-  historicalData,
-  stock
 });
 
 export default rootReducer;
