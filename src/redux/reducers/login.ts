@@ -6,7 +6,7 @@ import {
 } from "./types";
 
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem("token"),
   loading: true,
   error: null,
   isAuthenticated: null,
@@ -21,18 +21,18 @@ export default function login(state = initialState, action: LoginUserTypes) {
         loading: true,
       };
     case LOGIN_USER_SUCCESS:
-      localStorage.setItem('token', action.payload.token)
-      localStorage.setItem('id', action.payload.result._id)
+      console.log("login success");
+      localStorage.setItem("token", action.payload.token);
+      console.log(action.payload.token);
       return {
         ...state,
         ...action.payload,
         loading: false,
         isAuthenticated: true,
-        user : action.payload.result,
+        user: action.payload.result,
       };
     case LOGIN_USER_FAILED:
-      localStorage.removeItem('token');
-      localStorage.removeItem('id');
+      localStorage.removeItem("token");
       return {
         ...state,
         loading: false,

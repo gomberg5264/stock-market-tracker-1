@@ -8,6 +8,8 @@ import StyledLink from "../components/StyledLink";
 import StyledPaper from "./StyledPaper";
 import StyledForm from "./StyledForm";
 import Menu from "../components/Menu";
+import PageWrapper from '../components/PageWrapper'
+
 interface State {
   email: string;
   password: string;
@@ -55,7 +57,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuthenticatedLogin || isAuthenticatedLoadUser)
-      history.push("/dashboard");
+      history.push("/watchlist");
   }, [isAuthenticatedLogin, isAuthenticatedLoadUser]);
 
   const handleChange =
@@ -70,11 +72,11 @@ const LoginPage = () => {
       password: values.password,
     };
     dispath(loginUser(user));
-    history.push("/dashboard");
+    history.push("/watchlist");
   };
 
   return (
-    <>
+    <PageWrapper home={false}>
       <Menu headerText="Stock Market Tracker" />
       {!loadingLogin ||
         (!loadingLoadUser && (
@@ -111,7 +113,7 @@ const LoginPage = () => {
             </StyledForm>
           </StyledPaper>
         ))}
-    </>
+    </PageWrapper>
   );
 };
 

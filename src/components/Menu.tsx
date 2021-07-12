@@ -13,12 +13,18 @@ import styled from "styled-components/macro";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../redux/actions/auth";
 import Header from "./Header";
-
+import SideBar from "./SideBar";
 const StyledAppBar = styled(AppBar)`
   && {
     background: transparent;
     padding-top: 30px;
     box-shadow: none;
+
+    @media screen and (min-width: 1000px) {
+      .menu {
+        display: none;
+      }
+    }
   }
 `;
 
@@ -92,6 +98,7 @@ const Menu: FC<MenuProps> = ({ headerText }) => {
                 edge="start"
                 color="inherit"
                 aria-label="menu"
+                className="menu"
               >
                 <MenuIcon fontSize="large" />
               </IconButton>
@@ -117,8 +124,8 @@ const Menu: FC<MenuProps> = ({ headerText }) => {
                 <ClearIcon fontSize="large" />
               </IconButton>
             </ListItem>
-            <ListItem button component={Link} to="/profile">
-              My Profile
+            <ListItem button component={Link} to="/dashboard">
+              Dashboard
             </ListItem>
             <ListItem button component={Link} to="/" onClick={logout}>
               Log out
@@ -126,6 +133,7 @@ const Menu: FC<MenuProps> = ({ headerText }) => {
           </List>
         </div>
       </StyledDrawer>
+      <SideBar/>
     </>
   );
 };

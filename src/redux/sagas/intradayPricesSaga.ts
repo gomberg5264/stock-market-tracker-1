@@ -1,8 +1,8 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
-export function getIntradayPrices() {
+export function getIntradayPrices(symbols: any) {
   return fetch(
-    `${process.env.REACT_APP_SANDBOX_BASE_URL}stable/stock/market/batch?symbols=mcd,coke,fb,race,msft,dg&types=intraday-prices&token=${process.env.REACT_APP_SANDBOX_API_KEY}`
+    `${process.env.REACT_APP_SANDBOX_BASE_URL}stable/stock/market/batch?symbols=${symbols}&types=intraday-prices&token=${process.env.REACT_APP_SANDBOX_API_KEY}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -21,9 +21,10 @@ export function getIntradayPrices() {
           name,
           data: priceAndTimestamp,
         });
-        currentPricesList.push(
-          priceAndTimestamp[priceAndTimestamp.length - 1][1]
-        );
+        currentPricesList.push({
+          name,
+          currentPrice: priceAndTimestamp[priceAndTimestamp.length - 1][1],
+        });
       }
       return [intradayResult, currentPricesList];
     })
@@ -32,9 +33,9 @@ export function getIntradayPrices() {
     });
 }
 
-export function* fetchIntradayPrices(): any {
+export function* fetchIntradayPrices(action: any): any {
   try {
-    const prices = yield call(getIntradayPrices);
+    const prices = yield getIntradayPrices(action.payload);
     yield put({
       type: "GET_INTRADAY_PRICES_SUCCESS",
       prices,

@@ -1,38 +1,36 @@
 import {
-  LoadUserTypes,
-  LOAD_USER_REQUESTED,
-  LOAD_USER_SUCCESS,
-  LOAD_USER_FAILED,
-  LOGOUT,
+  AddSymbolTypes,
+  ADD_SYMBOL_REQUESTED,
+  ADD_SYMBOL_SUCCESS,
+  ADD_SYMBOL_FAILED,
 } from "./types";
 
 const initialState = {
   token: localStorage.getItem("token"),
   loading: true,
   error: null,
-  isAuthenticated: null,
 };
-export default function loadUser(state = initialState, action: LoadUserTypes) {
+
+export default function addSymbol(
+  state = initialState,
+  action: AddSymbolTypes
+) {
   switch (action.type) {
-    case LOAD_USER_REQUESTED:
+    case ADD_SYMBOL_REQUESTED:
       return {
         ...state,
         loading: true,
       };
-    case LOAD_USER_SUCCESS:
+    case ADD_SYMBOL_SUCCESS:
       return {
         ...state,
         ...action.payload,
         loading: false,
-        isAuthenticated: true,
       };
-    case LOAD_USER_FAILED:
-    case LOGOUT:
-      localStorage.removeItem("token");
+    case ADD_SYMBOL_FAILED:
       return {
         ...state,
         loading: false,
-        isAuthenticated: false,
         error: action.message,
       };
     default:

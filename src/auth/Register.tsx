@@ -8,6 +8,7 @@ import StyledLink from "../components/StyledLink";
 import StyledPaper from "./StyledPaper";
 import StyledForm from "./StyledForm";
 import Menu from "../components/Menu";
+import PageWrapper from '../components/PageWrapper';
 
 interface State {
   name: string;
@@ -50,14 +51,6 @@ const Register = () => {
       setValues({ ...values, [prop]: event.target.value });
     };
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-
-  const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-  };
-
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const newUser = {
@@ -69,8 +62,7 @@ const Register = () => {
   };
 
   return (
-    <>
-      {" "}
+    <PageWrapper home={false}>
       <Menu headerText="Stock Market Tracker" />
       <StyledPaper title="Register">
         <StyledForm onSubmit={handleSubmit}>
@@ -80,8 +72,8 @@ const Register = () => {
             margin="normal"
             required
             fullWidth
-            id="email"
-            name="email"
+            id="name"
+            name="name"
             autoComplete="email"
             autoFocus
             onChange={handleChange("name")}
@@ -128,7 +120,7 @@ const Register = () => {
           </div>
         </StyledForm>
       </StyledPaper>
-    </>
+    </PageWrapper>
   );
 };
 

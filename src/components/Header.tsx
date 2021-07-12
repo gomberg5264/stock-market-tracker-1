@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 
 const StyledHeader = styled.div`
   z-index: 1400;
-  margin: 0 0 60px 60px;
+  margin: 0 0 30px 60px;
   font-size: 34px;
 `;
 

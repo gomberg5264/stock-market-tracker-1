@@ -18,6 +18,7 @@ export function loginUserAPI(user: any) {
       return data;
     })
     .catch((error) => {
+      console.log(error.message)
       throw Error(error.message);
     });
 }
@@ -28,6 +29,10 @@ export function* loginUser(action: any): any {
     console.log(response);
     yield put({
       type: "LOGIN_USER_SUCCESS",
+      payload: response,
+    });
+    yield put({
+      type: "LOAD_USER_SUCCESS",
       payload: response,
     });
   } catch (e) {
