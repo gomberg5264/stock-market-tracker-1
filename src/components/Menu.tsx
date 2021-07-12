@@ -1,19 +1,22 @@
 import React, { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ClearIcon from "@material-ui/icons/Clear";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
-import { ListItem } from "@material-ui/core";
-import styled from "styled-components/macro";
+import {
+  AppBar,
+  Drawer,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  Toolbar,
+} from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../redux/actions/auth";
 import Header from "./Header";
 import SideBar from "./SideBar";
+import styled from "styled-components/macro";
+
 const StyledAppBar = styled(AppBar)`
   && {
     background: transparent;
@@ -133,7 +136,7 @@ const Menu: FC<MenuProps> = ({ headerText }) => {
           </List>
         </div>
       </StyledDrawer>
-      <SideBar/>
+      <SideBar />
     </>
   );
 };

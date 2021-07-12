@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
 export function registerUserApi(newUser: any) {
-  return fetch("http://localhost:5000/user/register", {
+  return fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/user/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -9,14 +9,13 @@ export function registerUserApi(newUser: any) {
     body: JSON.stringify(newUser),
   })
     .then(async (response) => {
-      console.log(response);
       if (!response.ok) {
         throw await response.json();
       }
       return response;
     })
     .catch((error) => {
-      throw Error(error.message)
+      throw Error(error.message);
     });
 }
 

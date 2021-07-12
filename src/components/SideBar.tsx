@@ -1,19 +1,16 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { Drawer, List, ListItem, Tooltip } from "@material-ui/core";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import Drawer from "@material-ui/core/Drawer";
-import ExploreIcon from "@material-ui/icons/Explore";
-import ListItem from "@material-ui/core/ListItem";
-import List from "@material-ui/core/List";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import Tooltip from "@material-ui/core/Tooltip";
-import styled from "styled-components/macro";
 import SearchIcon from "@material-ui/icons/Search";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import TimelineIcon from "@material-ui/icons/Timeline";
-import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../redux/actions/auth";
 import ViewAgendaOutlinedIcon from "@material-ui/icons/ViewAgendaOutlined";
+import { logoutUser } from "../redux/actions/auth";
+import styled from "styled-components/macro";
+
 const StyledDrawer = styled(Drawer)`
   && {
     .MuiPaper-root {
@@ -70,6 +67,7 @@ const SideBar = () => {
     (state: LoadRootState) => state.loadUser.isAuthenticated
   );
   const logout = () => dispatch(logoutUser());
+  
   return (
     <>
       {(isAuthenticatedLogin || isAuthenticatedLoadUser) && (

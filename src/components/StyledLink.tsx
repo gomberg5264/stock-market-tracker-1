@@ -15,6 +15,7 @@ const PinkLink = styled(Link)`
 type LinkProps = {
   to: string;
 };
+
 const StyledLink: FC<LinkProps> = ({ children, to }) => {
   return <PinkLink to={to}>{children}</PinkLink>;
 };

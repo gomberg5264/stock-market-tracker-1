@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
 export function loginUserAPI(user: any) {
-  return fetch("http://localhost:5000/user/login", {
+  return fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/user/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -26,7 +26,6 @@ export function loginUserAPI(user: any) {
 export function* loginUser(action: any): any {
   try {
     const response = yield loginUserAPI(action.payload);
-    console.log(response);
     yield put({
       type: "LOGIN_USER_SUCCESS",
       payload: response,

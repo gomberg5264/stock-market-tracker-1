@@ -1,8 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
 export function loadUserAPI(token: any) {
-  console.log('fetch', token);
-  return fetch("http://localhost:5000/auth", {
+  return fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/auth`, {
     method: "GET",
     headers: {
       Authorisation: token,
@@ -26,7 +25,6 @@ export function loadUserAPI(token: any) {
 export function* loadUser(action: any): any {
   try {
     const response = yield loadUserAPI(action.payload);
-    console.log(response);
     yield put({
       type: "LOAD_USER_SUCCESS",
       payload: response,

@@ -1,32 +1,36 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Chip from "@material-ui/core/Chip";
-import CloseIcon from "@material-ui/icons/Close";
-import { getQuote } from "../redux/actions/quote";
-import { getIntradayPrices } from "../redux/actions/intradayPrices";
-import { createWatchlist } from "../redux/actions/watchlist";
-import Menu from "./Menu";
-import PageWrapper from "./PageWrapper";
-import styled from "styled-components/macro";
-import AddIcon from "@material-ui/icons/Add";
-import WatchListTable from "./WatchListTable";
-import Button from "@material-ui/core/Button";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import Dialog from "@material-ui/core/Dialog";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import TextField from "@material-ui/core/TextField";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import AddButton from "./AddButton";
+import Menu from "./Menu";
+import AddIcon from "@material-ui/icons/Add";
+import CloseIcon from "@material-ui/icons/Close";
+import {
+  Button,
+  Chip,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  FormControlLabel,
+  RadioGroup,
+  Radio,
+  TextField,
+} from "@material-ui/core";
+import PageWrapper from "./PageWrapper";
+import WatchListTable from "./WatchListTable";
+import { getQuote } from "../redux/actions/quote";
+import { createWatchlist } from "../redux/actions/watchlist";
 import { loadUser } from "../redux/actions/auth";
 import { addSymbol } from "../redux/actions/symbol";
+import styled from "styled-components/macro";
+
 type ChipProps = {
   active?: boolean;
 };
+
 const options = ["msft", "ibm", "hpq", "googl", "coke", "fb", "xlk"];
+
 const StyledChip = styled(Chip)<ChipProps>`
   && {
     font-family: "Bebas Neue", cursive;
@@ -99,6 +103,7 @@ const Dashboard = () => {
     name: "",
     symbols: [""],
   });
+
   const [currentUser, setCurrentUser] = useState<any>({});
   const [openSymbol, setOpenSymbol] = useState(false);
   const [openWatchlist, setOpenWatchlist] = useState(false);
@@ -115,12 +120,6 @@ const Dashboard = () => {
   );
   const loggedInUser = useSelector((state: LoginRootState) => state.login.user);
   const loadedUser = useSelector((state: LoadRootState) => state.loadUser.user);
-  const loggedInUserLoading = useSelector(
-    (state: LoginRootState) => state.login.loading
-  );
-  const loadedUserLoading = useSelector(
-    (state: LoadRootState) => state.loadUser.loading
-  );
 
   const quoteData: any = useSelector(
     (state: QuoteRootState) => state.quote.data
@@ -176,6 +175,9 @@ const Dashboard = () => {
       })
     );
     setOpenWatchlist(false);
+    dispatch(getQuote(activeWatchList.symbols.join(",")));
+    dispatch(loadUser(localStorage.getItem("token") || ""));
+    setCurrentUser(loadedUser ? loadedUser : loggedInUser ? loggedInUser : {});
   };
 
   const handleSetActiveWatchList = (item: any) => {
@@ -207,12 +209,14 @@ const Dashboard = () => {
       })
     );
     dispatch(getQuote(activeWatchList.symbols.concat(newSymbol).join(",")));
+    dispatch(loadUser(localStorage.getItem("token") || ""));
+    setCurrentUser(loadedUser ? loadedUser : loggedInUser ? loggedInUser : {});
   };
 
   const handleSymbolChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewSymbol((event.target as HTMLInputElement).value);
   };
-
+  console.log(currentUser);
   return (
     <PageWrapper home={false}>
       <Menu headerText="Watchlists" />
@@ -237,7 +241,7 @@ const Dashboard = () => {
                   icon={<AddIcon />}
                   label={"CREATE NEW WATCHLIST"}
                   clickable
-                  onClick={() => handleAddWatchList()}
+                  onClick={handleAddWatchList}
                   active={false}
                 />
               </div>

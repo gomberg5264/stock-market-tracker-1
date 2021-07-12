@@ -28,7 +28,6 @@ export function addSymbolAPI(data: any) {
 
 export function* addSymbol(action: any): any {
   try {
-    console.log("hey");
     const response = yield addSymbolAPI(action.payload);
 
     yield put({

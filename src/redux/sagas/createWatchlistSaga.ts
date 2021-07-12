@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
 export function createWatchlistAPI(data: any) {
-  return fetch("http://localhost:5000/user/add-watchlist", {
+  return fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/user/add-watchlist`, {
     method: "POST",
     headers: {
       Authorisation: data.token,
