@@ -21,9 +21,7 @@ export default function login(state = initialState, action: LoginUserTypes) {
         loading: true,
       };
     case LOGIN_USER_SUCCESS:
-      console.log("login success");
       localStorage.setItem("token", action.payload.token);
-      console.log(action.payload.token);
       return {
         ...state,
         ...action.payload,

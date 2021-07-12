@@ -10,7 +10,6 @@ const HomeWrapper = styled.div`
   a {
     border-bottom: none;
   }
-
   @-webkit-keyframes fade-in-left {
     0% {
       -webkit-transform: translateX(-50px);

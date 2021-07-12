@@ -72,7 +72,6 @@ const LoginPage = () => {
       password: values.password,
     };
     dispath(loginUser(user));
-    history.push("/watchlist");
   };
 
   return (

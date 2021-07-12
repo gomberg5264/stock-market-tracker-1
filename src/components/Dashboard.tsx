@@ -140,7 +140,7 @@ const Dashboard = () => {
       ? loadedUser.watchLists[0].symbols
       : [];
     dispatch(getQuote(symbols.join(",")));
-    activeWatchList.name != "" &&
+    activeWatchList.name == "" &&
       setActiveWatchList(
         loadedUser
           ? loadedUser.watchLists[0]
@@ -149,11 +149,7 @@ const Dashboard = () => {
           : { name: "", symbols: [""] }
       );
     setCurrentUser(loadedUser ? loadedUser : loggedInUser ? loggedInUser : {});
-  }, [loadUser, getQuote]);
-
-  useEffect(() => {
-    dispatch(loadUser(localStorage.getItem("token") || ""));
-  }, [newWatchlist, newSymbol]);
+  }, []);
 
   const handleAddWatchList = () => {
     setOpenWatchlist(true);
@@ -175,9 +171,11 @@ const Dashboard = () => {
       })
     );
     setOpenWatchlist(false);
-    dispatch(getQuote(activeWatchList.symbols.join(",")));
+    dispatch(getQuote([""].join(",")));
     dispatch(loadUser(localStorage.getItem("token") || ""));
-    setCurrentUser(loadedUser ? loadedUser : loggedInUser ? loggedInUser : {});
+    const user = { ...currentUser };
+    user.watchLists.push({ name: newWatchlist, symbols: [] });
+    setCurrentUser(user);
   };
 
   const handleSetActiveWatchList = (item: any) => {
@@ -197,10 +195,9 @@ const Dashboard = () => {
 
   const handleAddSymbol = () => {
     setOpenSymbol(false);
-    setActiveWatchList({
-      name: activeWatchList.name,
-      symbols: [...activeWatchList.symbols, newSymbol],
-    });
+    const updatedWatchList = { ...activeWatchList };
+    updatedWatchList.symbols.push(newSymbol);
+    setActiveWatchList(updatedWatchList);
     dispatch(
       addSymbol({
         symbolName: newSymbol,
@@ -208,15 +205,18 @@ const Dashboard = () => {
         token: localStorage.getItem("token") || "",
       })
     );
-    dispatch(getQuote(activeWatchList.symbols.concat(newSymbol).join(",")));
+    dispatch(getQuote(updatedWatchList.symbols.join(",")));
     dispatch(loadUser(localStorage.getItem("token") || ""));
-    setCurrentUser(loadedUser ? loadedUser : loggedInUser ? loggedInUser : {});
+
+    const user = { ...currentUser };
+    user.watchLists[activeWatchList.name] = updatedWatchList;
+    setCurrentUser(user);
   };
 
   const handleSymbolChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewSymbol((event.target as HTMLInputElement).value);
   };
-  console.log(currentUser);
+  
   return (
     <PageWrapper home={false}>
       <Menu headerText="Watchlists" />

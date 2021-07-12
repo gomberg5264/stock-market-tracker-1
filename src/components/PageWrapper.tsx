@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import styled from "styled-components/macro";
-import background from "../img/background.jpeg";
 
 const StyledPageWrapper = styled.div<WrapperProps>`
   width: 100%;
@@ -12,14 +11,21 @@ const StyledPageWrapper = styled.div<WrapperProps>`
       rgba(9, 41, 79, ${(props) => (props.home ? 0.8 : 1)}) 74.1%,
       rgba(26, 21, 39, ${(props) => (props.home ? 0.8 : 1)}) 100%
     ),
-    url(${(props) => props.home && background});
+    url(${(props) =>
+      props.home &&
+      `${process.env.REACT_APP_AWS_S3_BASE_URL}/background.jpeg`});
   img {
     height: 100%;
     top: 100px;
     position: absolute;
     display: block;
   }
-  text-align: center;
+  ${(props) =>
+    props.home &&
+    `display: flex;
+  justify-content: left;
+  align-items: center;`};
+
   color: white;
   overflow-x: hidden;
   a:hover {
