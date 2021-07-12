@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
 export function addSymbolAPI(data: any) {
-  return fetch("http://localhost:5000/user/add-symbol", {
+  return fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/user/add-symbol`, {
     method: "POST",
     headers: {
       Authorisation: data.token,
