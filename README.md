@@ -29,7 +29,7 @@ Clone the master branch and then run following scripts in the project directory:
 ![react](https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white)
 ![styled](https://img.shields.io/badge/-Styled_Components-db7092?style=flat-square&logo=styled-components&logoColor=white)
 ![redux](https://img.shields.io/badge/-Redux-764ABC?style=flat-square&logo=redux&logoColor=white)
-![bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white)
+![material-ui](https://img.shields.io/badge/-MaterialUI-0081CB?style=flat-square&logo=material-ui&logoColor=white)
 
 ## Resources
 
@@ -37,7 +37,7 @@ Clone the master branch and then run following scripts in the project directory:
 | :----------------------------------------------------------------- | :------------------------------------------------------------------------ |
 | Highcharts - charting library | [highcharts](https://www.highcharts.com/) |
 | Highcharts-React - official Highcharts wrapper for React | [highcharts-react](https://github.com/highcharts/highcharts-react) |
-| React Bootstrap - a popular framework rebuilt for React          | [react bootstrap](https://react-bootstrap.github.io/) |
+| Material-UI components - a popular React UI framework              | [Material-UI docs](https://material-ui.com/getting-started/installation/) |
 | Library that utilises tagged template literals to style React components | [styled components](https://styled-components.com/)                       |
 | React Redux        | [react-redux](https://react-redux.js.org/)|
 | React - JavaScript library for building user interfaces            | [create-react-app](https://github.com/facebook/create-react-app)|
