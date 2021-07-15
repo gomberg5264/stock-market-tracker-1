@@ -1,46 +1,44 @@
-# Getting Started with Create React App
+![commit](https://img.shields.io/github/last-commit/xandrav/stock-market-tracker?color=orange)
+![Forks](https://img.shields.io/github/forks/xandrav/stock-market-tracker?style=social)
+![Stars](https://img.shields.io/github/stars/xandrav/stock-market-tracker?style=social)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
+<p align="center">
+  <h1 align="center">Stock Market Tracker</h1>
 
-## Available Scripts
+  <p align="center">
+    A React - Redux - TypeScript application that allow users to sign up and create watchlists for stocks and view real time intraday and historical data. This project is using the <a href="https://iexcloud.io/">IEX Cloud Financial Data APIs</a> to access live and historical data on stocks. The backend is built with Node.js and uses a Mongodb database.
+    <br />
+    <br />
+    <a href="https://master.d2sepshwwzeglq.amplifyapp.com/">View Deployed App</a> 
+  </p>
+</p>
 
-In the project directory, you can run:
+## Installation
 
-### `yarn start`
+Clone the master branch and then run following scripts in the project directory:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- `npm install` - to install relevant dependencies
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- `npm start` - to start the react app
 
-### `yarn test`
+### Built With
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![typescript](https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
+![highcharts](https://img.shields.io/badge/-Highcharts.js-48DAD0?style=flat-square)
+![react](https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white)
+![styled](https://img.shields.io/badge/-Styled_Components-db7092?style=flat-square&logo=styled-components&logoColor=white)
+![redux](https://img.shields.io/badge/-Redux-764ABC?style=flat-square&logo=redux&logoColor=white)
+![material-ui](https://img.shields.io/badge/-MaterialUI-0081CB?style=flat-square&logo=material-ui&logoColor=white)
 
-### `yarn build`
+## Resources
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Description                                                        | Link                                                                      |
+| :----------------------------------------------------------------- | :------------------------------------------------------------------------ |
+| Highcharts - charting library | [highcharts](https://www.highcharts.com/) |
+| Highcharts-React - official Highcharts wrapper for React | [highcharts-react](https://github.com/highcharts/highcharts-react) |
+| Material-UI components - a popular React UI framework              | [Material-UI docs](https://material-ui.com/getting-started/installation/) |
+| Library that utilises tagged template literals to style React components | [styled components](https://styled-components.com/)                       |
+| React Redux        | [react-redux](https://react-redux.js.org/)|
+| React - JavaScript library for building user interfaces            | [create-react-app](https://github.com/facebook/create-react-app)|
+|AWS Amplify |  [Amplify](https://aws.amazon.com/amplify/)
