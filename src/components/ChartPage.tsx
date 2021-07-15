@@ -92,11 +92,10 @@ const ChartPage = () => {
   useEffect(() => {
     dispatch(getIntradayPrices(stocks));
   }, []);
-  
+
   return (
     <PageWrapper home={false}>
       <Menu headerText="Prices" />
-      {loading && <Loader />}
       {!loading && intradayData.length > 0 && (
         <ChartWrapper>
           <HighchartsReact

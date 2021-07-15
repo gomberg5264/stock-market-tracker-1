@@ -81,7 +81,7 @@ const SideBar = () => {
                   </ListItemIcon>
                 </Tooltip>
               </ListItem>
-              <ListItem button component={Link} to="/dashboard">
+              <ListItem button component={Link} to="/watchlist">
                 <Tooltip title="Dashboard" placement="right">
                   <ListItemIcon style={listIconStyle}>
                     <DashboardIcon />
@@ -95,7 +95,7 @@ const SideBar = () => {
                   </ListItemIcon>
                 </Tooltip>
               </ListItem>
-              <ListItem button component={Link} to="/search">
+              <ListItem button component={Link} to="/watchlist">
                 <Tooltip title="Search" placement="right">
                   <ListItemIcon style={listIconStyle}>
                     <SearchIcon />
