@@ -4,6 +4,7 @@ import LoginPage from "./auth/LoginPage";
 import Register from "./auth/Register";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
+import ChartPage from "./components/ChartPage";
 import PrivateRoute from "./routing/PrivateRoute";
 import { loadUser } from "./redux/actions/auth";
 import { useDispatch } from "react-redux";
@@ -31,6 +32,9 @@ const App = () => {
           </Route>
           <PrivateRoute exact path="/watchlist">
             <Dashboard />
+          </PrivateRoute>
+          <PrivateRoute exact path="/chart">
+            <ChartPage />
           </PrivateRoute>
         </ThemeProvider>
       </Switch>
