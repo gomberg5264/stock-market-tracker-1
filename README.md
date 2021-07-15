@@ -15,11 +15,6 @@
 </p>
 
 <img src="./img/stocks1.png"/>
-<p float="left">
-  <img src="./img/stocks3.png" width="500" />
-  <img src="./img/stocks2.png" width="470" /> 
-</p>
-
 
 ## Installation
 
