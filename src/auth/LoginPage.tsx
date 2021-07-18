@@ -47,18 +47,13 @@ const LoginPage = () => {
   const isAuthenticatedLoadUser = useSelector(
     (state: LoadRootState) => state.loadUser.isAuthenticated
   );
-  const loadingLogin = useSelector(
-    (state: LoginRootState) => state.login.loading
-  );
-  const loadingLoadUser = useSelector(
-    (state: LoadRootState) => state.loadUser.loading
-  );
+
   const error = useSelector((state: LoginRootState) => state.login.error);
 
   useEffect(() => {
     if (isAuthenticatedLogin || isAuthenticatedLoadUser)
       history.push("/watchlist");
-  }, [isAuthenticatedLogin, isAuthenticatedLoadUser]);
+  }, [isAuthenticatedLogin, isAuthenticatedLoadUser, history]);
 
   const handleChange =
     (prop: keyof State) => (event: ChangeEvent<HTMLInputElement>) => {

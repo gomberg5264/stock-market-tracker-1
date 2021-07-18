@@ -3,6 +3,7 @@ import registerSaga from "./registerUserSaga";
 import loginSaga from "./loginUserSaga";
 import loadUserSaga from "./loadUserSaga";
 import intradayPricesSaga from "./intradayPricesSaga";
+import historicalPricesSaga from "./historicalPricesSaga";
 import quoteSaga from "./quoteSaga";
 import createWatchlistSaga from "./createWatchlistSaga";
 import addSymbolSaga from "./addSymbolSaga";
@@ -13,6 +14,7 @@ export default function* rootSaga() {
     loginSaga(),
     loadUserSaga(),
     intradayPricesSaga(),
+    historicalPricesSaga(),
     quoteSaga(),
     createWatchlistSaga(),
     addSymbolSaga(),

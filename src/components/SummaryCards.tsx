@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import Card from "./Card";
 import { useDispatch, useSelector } from "react-redux";
-import { getQuote } from "../redux/actions/quote";
+import { getQuote } from "../redux/actions/stocks";
 import styled from "styled-components/macro";
 
 type SummaryCardsProps = {
@@ -46,15 +46,13 @@ const SummaryCards: FC<SummaryCardsProps> = ({ currentPrices }) => {
   useEffect(() => {
     dispatch(getQuote(symbols));
   }, []);
-  console.log(currentPrices.length);
-  console.log(quoteData);
 
   return (
     <Wrapper>
       {loading && <div />}
       {!loading &&
         currentPrices.length > 0 &&
-        quoteData.map((q: any) => <Card data={q} />)}
+        quoteData.map((q: any) => <Card key={q.symbol} data={q} />)}
       {error && error.message}
     </Wrapper>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, FC } from "react";
+import React, { FC } from "react";
 import { Route, RouteProps, Redirect } from "react-router";
 import { useSelector } from "react-redux";
 interface LoadRootState {
@@ -25,12 +25,18 @@ const PrivateRoute: FC<PrivateRouteProps> = ({ children, ...rest }) => {
   const isAuthenticatedLoadUser = useSelector(
     (state: LoadRootState) => state.loadUser.isAuthenticated
   );
-  
+  const loadingLogin = useSelector(
+    (state: LoginRootState) => state.login.loading
+  );
+  const loadingLoadUser = useSelector(
+    (state: LoadRootState) => state.loadUser.loading
+  );
+
   return (
     <Route
       {...rest}
       render={() =>
-       (isAuthenticatedLogin || isAuthenticatedLoadUser) ? (
+        isAuthenticatedLogin || (isAuthenticatedLoadUser && !loadingLogin) ? (
           children
         ) : (
           <Redirect to="/login" />

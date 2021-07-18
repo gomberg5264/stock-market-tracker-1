@@ -19,7 +19,7 @@ import {
 } from "@material-ui/core";
 import PageWrapper from "./PageWrapper";
 import WatchListTable from "./WatchListTable";
-import { getQuote } from "../redux/actions/quote";
+import { getQuote, getHistoricalPrices } from "../redux/actions/stocks";
 import { createWatchlist } from "../redux/actions/watchlist";
 import { loadUser } from "../redux/actions/auth";
 import { addSymbol } from "../redux/actions/symbol";
@@ -140,7 +140,8 @@ const WatchlistPage = () => {
       ? loadedUser.watchLists[0].symbols
       : [];
     dispatch(getQuote(symbols.join(",")));
-    activeWatchList.name == "" &&
+    dispatch(getHistoricalPrices(symbols.join(",")));
+    activeWatchList.name === "" &&
       setActiveWatchList(
         loadedUser
           ? loadedUser.watchLists[0]

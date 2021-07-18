@@ -99,7 +99,7 @@ const MiniChart: FC<StocksChartProps> = ({ symbol, positive }) => {
   );
 
   const intradayPrices = intradayData[0].filter(
-    (item: any) => item.name == symbol
+    (item: any) => item.name === symbol
   )[0];
 
   return (

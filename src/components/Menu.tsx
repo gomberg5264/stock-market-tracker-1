@@ -67,14 +67,11 @@ const StyledDrawer = styled(Drawer)`
 type MenuProps = {
   headerText: string;
 };
+
 const Menu: FC<MenuProps> = ({ headerText }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [page, setPage] = useState("/");
-
-  useEffect(() => {
-    setPage(window.location.pathname);
-  }, [window.location.pathname]);
+  
   const logout = () => dispatch(logoutUser());
 
   const toggleDrawer = (open: boolean) => (event: any) => {
@@ -86,6 +83,7 @@ const Menu: FC<MenuProps> = ({ headerText }) => {
     }
     setOpen(open);
   };
+  
   return (
     <>
       <StyledAppBar position="static">

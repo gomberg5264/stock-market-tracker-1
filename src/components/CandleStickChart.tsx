@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Menu from "./Menu";
-import PageWrapper from "./PageWrapper";
+import React, { FC } from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
-import options from "./StocksChartConfig";
-import { getIntradayPrices } from "../redux/actions/stocks";
+import options from "./CandleStickChartConfig";
 import styled from "styled-components/macro";
-import SummaryCards from "./SummaryCards";
+import { useSelector } from "react-redux";
+import { getHistoricalPrices } from "../redux/actions/stocks";
 
 const ChartWrapper = styled.div`
-  background: transparent;
   text-align: -webkit-center;
+  .symbol {
+    font-size: 20px;
+  }
   .highcharts-scrollbar-track {
     fill: transparent;
     stroke: grey;
@@ -35,9 +34,6 @@ const ChartWrapper = styled.div`
   }
   .highcharts-credits {
     display: none;
-  }
-  .highcharts-data-table tr:hover {
-    background: #f1f7ff;
   }
   @-webkit-keyframes fade-in-left {
     0% {
@@ -63,50 +59,51 @@ const ChartWrapper = styled.div`
       opacity: 1;
     }
   }
+
   -webkit-animation: fade-in-left 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in-left 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 `;
-
 interface RootState {
-  intradayPrices: {
+  historicalPrices: {
     prices: any;
     loading: boolean;
     error: { message: string };
   };
 }
-const stocks = ["msft", "ibm", "hpq", "coke", "fb", "xlk", "googl"];
 
-const ChartPage = () => {
-  const dispatch = useDispatch();
-  const intradayData = useSelector(
-    (state: RootState) => state.intradayPrices.prices
+type ChartProps = {
+  symbol: string;
+};
+
+const CandleStickCharts: FC<ChartProps> = ({ symbol }) => {
+  const historical = useSelector(
+    (state: RootState) => state.historicalPrices.prices
   );
-  const intradayPrices = intradayData[0];
-  const currentPrices = intradayData[1];
+  const selectedStockHistoricalData = historical.filter(
+    (stock: any) => stock.name.toLowerCase() === symbol
+  )[0];
+  console.log(selectedStockHistoricalData);
   const loading = useSelector(
-    (state: RootState) => state.intradayPrices.loading
+    (state: RootState) => state.historicalPrices.loading
   );
-  const error = useSelector((state: RootState) => state.intradayPrices.error);
-  useEffect(() => {
-    dispatch(getIntradayPrices(stocks));
-  }, []);
+  const error = useSelector((state: RootState) => state.historicalPrices.error);
 
   return (
-    <PageWrapper home={false}>
-      <Menu headerText="Prices" />
-      {!loading && intradayData.length > 0 && (
+    <div>
+      {!loading && historical.length > 0 && historical[0] && (
         <ChartWrapper>
-          <SummaryCards currentPrices={currentPrices} />
+          <span className="symbol">{symbol}</span>
+
           <HighchartsReact
             highcharts={Highcharts}
             constructorType={"stockChart"}
-            options={options(intradayPrices)}
+            options={options(selectedStockHistoricalData)}
           />
         </ChartWrapper>
       )}
       {error && error.message}
-    </PageWrapper>
+    </div>
   );
 };
 
-export default ChartPage;
+export default CandleStickCharts;

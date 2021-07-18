@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
-//import { updateStock } from "../redux/actions/stock";
 import MiniChart from "./MiniChart";
 import styled from "styled-components/macro";
 

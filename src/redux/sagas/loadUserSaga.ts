@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { put, takeEvery } from "redux-saga/effects";
 
 export function loadUserAPI(token: any) {
   return fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/auth`, {

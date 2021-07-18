@@ -66,28 +66,6 @@ export type LoadUserTypes =
   | LoadUserFailed
   | Logout;
 
-export const GET_INTRADAY_PRICES_REQUESTED = "GET_INTRADAY_PRICES_REQUESTED";
-export const GET_INTRADAY_PRICES_SUCCESS = "GET_INTRADAY_PRICES_SUCCESS";
-export const GET_INTRADAY_PRICES_FAILED = "GET_INTRADAY_PRICES_FAILED";
-
-interface GetIntradayPricesRequested {
-  type: typeof GET_INTRADAY_PRICES_REQUESTED;
-  payload: any;
-}
-interface GetIntradayPricesSuccess {
-  type: typeof GET_INTRADAY_PRICES_SUCCESS;
-  prices: object;
-}
-interface GetIntradayPricesFailed {
-  type: typeof GET_INTRADAY_PRICES_FAILED;
-  message: string;
-}
-
-export type IntradayPricesTypes =
-  | GetIntradayPricesRequested
-  | GetIntradayPricesSuccess
-  | GetIntradayPricesFailed;
-
 export const GET_QUOTE_REQUESTED = "GET_QUOTE_REQUESTED";
 export const GET_QUOTE_SUCCESS = "GET_QUOTE_SUCCESS";
 export const GET_QUOTE_FAILED = "GET_QUOTE_FAILED";
@@ -148,3 +126,48 @@ export type AddSymbolTypes =
   | AddSymbolRequested
   | AddSymbolSuccess
   | AddSymbolFailed;
+
+export const GET_INTRADAY_PRICES_REQUESTED = "GET_INTRADAY_PRICES_REQUESTED";
+export const GET_INTRADAY_PRICES_SUCCESS = "GET_INTRADAY_PRICES_SUCCESS";
+export const GET_INTRADAY_PRICES_FAILED = "GET_INTRADAY_PRICES_FAILED";
+
+interface GetIntradayPricesRequested {
+  type: typeof GET_INTRADAY_PRICES_REQUESTED;
+  payload: any;
+}
+interface GetIntradayPricesSuccess {
+  type: typeof GET_INTRADAY_PRICES_SUCCESS;
+  prices: object;
+}
+interface GetIntradayPricesFailed {
+  type: typeof GET_INTRADAY_PRICES_FAILED;
+  message: string;
+}
+
+export type IntradayPricesTypes =
+  | GetIntradayPricesRequested
+  | GetIntradayPricesSuccess
+  | GetIntradayPricesFailed;
+
+export const GET_HISTORICAL_PRICES_REQUESTED =
+  "GET_HISTORICAL_PRICES_REQUESTED";
+export const GET_HISTORICAL_PRICES_SUCCESS = "GET_HISTORICAL_PRICES_SUCCESS";
+export const GET_HISTORICAL_PRICES_FAILED = "GET_HISTORICAL_PRICES_FAILED";
+
+interface GetHistoricalPricesRequested {
+  type: typeof GET_HISTORICAL_PRICES_REQUESTED;
+  payload: any;
+}
+interface GetHistoricalPricesSuccess {
+  type: typeof GET_HISTORICAL_PRICES_SUCCESS;
+  prices: any;
+}
+interface GetHistoricalPricesFailed {
+  type: typeof GET_HISTORICAL_PRICES_FAILED;
+  message: string;
+}
+
+export type HistoricalPricesTypes =
+  | GetHistoricalPricesRequested
+  | GetHistoricalPricesSuccess
+  | GetHistoricalPricesFailed;
