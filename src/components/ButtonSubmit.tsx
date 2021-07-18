@@ -5,7 +5,7 @@ import styled from "styled-components/macro";
 const StyledButton = styled(Button)`
   && {
     color: white;
-    background: ${({ theme }) => theme.pink};
+    background: ${({ theme }) => theme.yellow};
     font-size: 24px;
     font-family: "Bebas Neue", cursive;
     width: 200px;

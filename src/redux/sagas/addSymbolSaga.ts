@@ -40,7 +40,6 @@ export function* addSymbol(action: any): any {
 }
 
 function* addSymbolSaga() {
-  console.log("helllooo");
   yield takeEvery("ADD_SYMBOL_REQUESTED", addSymbol);
 }
 

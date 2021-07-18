@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginPage from "./auth/LoginPage";
 import Register from "./auth/Register";
 import Home from "./components/Home";
-import Dashboard from "./components/Dashboard";
+import WatchlistPage from "./components/WatchlistPage";
 import ChartPage from "./components/ChartPage";
 import PrivateRoute from "./routing/PrivateRoute";
 import { loadUser } from "./redux/actions/auth";
@@ -31,7 +31,7 @@ const App = () => {
             <LoginPage />
           </Route>
           <PrivateRoute exact path="/watchlist">
-            <Dashboard />
+            <WatchlistPage />
           </PrivateRoute>
           <PrivateRoute exact path="/chart">
             <ChartPage />

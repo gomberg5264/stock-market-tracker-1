@@ -35,7 +35,7 @@ const StyledChip = styled(Chip)<ChipProps>`
   && {
     font-family: "Bebas Neue", cursive;
     background-color: ${({ active }) => (active ? "white" : "transparent")};
-    color: ${({ active, theme }) => (active ? theme.pink : "white")};
+    color: ${({ active, theme }) => (active ? theme.purple : "white")};
     font-size: 18px;
     border: 1px solid #ffffff;
     padding: 12px;
@@ -97,7 +97,7 @@ interface QuoteRootState {
   };
 }
 
-const Dashboard = () => {
+const WatchlistPage = () => {
   const dispatch = useDispatch();
   const [activeWatchList, setActiveWatchList] = useState({
     name: "",
@@ -327,4 +327,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default WatchlistPage;

@@ -7,7 +7,7 @@ const PinkLink = styled(Link)`
     font-size: 22px;
     font-family: "Bebas Neue", cursive;
     color: inherit;
-    border-bottom: 1px solid ${({ theme }) => theme.pink};
+    border-bottom: 1px solid ${({ theme }) => theme.yellow};
     text-decoration: none;
   }
 `;

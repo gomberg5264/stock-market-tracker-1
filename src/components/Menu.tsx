@@ -50,7 +50,7 @@ const StyledDrawer = styled(Drawer)`
     }
     background: radial-gradient(
       168.45% 88.95% at 52.54% 0%,
-      #e5006e 23.89%,
+      #49418c 23.89%,
       #09294f 74.1%,
       #1a1527 100%
     );

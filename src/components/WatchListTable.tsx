@@ -31,6 +31,17 @@ const StyledTable = styled(Table)`
   }
 `;
 
+type CellProps = {
+  positive: boolean;
+};
+
+const StyledCell = styled(TableCell)<CellProps>`
+  && {
+    color: ${({ positive, theme }) =>
+      positive ? theme.green : theme.pink} !important;
+  }
+`;
+
 const WatchListTable = (quote: any) => {
   return (
     <div>
@@ -51,7 +62,9 @@ const WatchListTable = (quote: any) => {
                   <TableCell align="left">{row.symbol}</TableCell>
                   <TableCell align="left">{row.companyName}</TableCell>
                   <TableCell align="left">${row.latestPrice}</TableCell>
-                  <TableCell align="left">{row.changePercent}</TableCell>
+                  <StyledCell align="left" positive={row.changePercent > 0}>
+                    {row.changePercent}
+                  </StyledCell>
                 </TableRow>
               ))}
           </TableBody>

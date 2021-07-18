@@ -1,8 +1,8 @@
 import * as type from "./types";
 
 const initialState = {
-  prices: {},
-  loading: false,
+  prices: [],
+  loading: true,
   error: null,
 };
 

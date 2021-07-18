@@ -23,8 +23,8 @@ export default function options(
       },
     },
     chart: {
-      width: 1000,
-      height: 600,
+      width: window.innerWidth-200,
+      height: 500,
       backgroundColor: "transparent",
       style: {
         fontFamily: "'Bebas Neue', cursivef",

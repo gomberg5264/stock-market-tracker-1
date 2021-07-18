@@ -7,7 +7,7 @@ const StyledPageWrapper = styled.div<WrapperProps>`
   font-family: "Bebas Neue", cursive;
   background-image: radial-gradient(
       168.45% 88.95% at 52.54% 0%,
-      rgba(229, 0, 110, ${(props) => (props.home ? 0.8 : 1)}) 23.89%,
+      rgba(73, 65, 140, ${(props) => (props.home ? 0.8 : 1)}) 23.89%,
       rgba(9, 41, 79, ${(props) => (props.home ? 0.8 : 1)}) 74.1%,
       rgba(26, 21, 39, ${(props) => (props.home ? 0.8 : 1)}) 100%
     ),

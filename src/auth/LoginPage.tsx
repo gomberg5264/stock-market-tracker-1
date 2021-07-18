@@ -77,8 +77,6 @@ const LoginPage = () => {
   return (
     <PageWrapper home={false}>
       <Menu headerText="Stock Market Tracker" />
-      {!loadingLogin ||
-        (!loadingLoadUser && (
           <StyledPaper title="Sign in">
             <StyledForm onSubmit={handleSubmit}>
               <label>Email</label>
@@ -111,7 +109,6 @@ const LoginPage = () => {
               </div>
             </StyledForm>
           </StyledPaper>
-        ))}
     </PageWrapper>
   );
 };
