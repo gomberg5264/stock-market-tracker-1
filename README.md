@@ -14,7 +14,7 @@
   </p>
 </p>
 
-<img src="./img/stocks1.png"/>
+<img src="./demo.png"/>
 
 ## Installation
 

@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { useDispatch } from "react-redux";
 import MiniChart from "./MiniChart";
 import styled from "styled-components/macro";
 
@@ -79,15 +78,10 @@ const StyledCard = styled.div<any>`
 `;
 
 const Card: FC<CardProps> = ({ data }) => {
-  const dispatch = useDispatch();
   const { symbol, latestPrice, companyName, changePercent, volume } = data;
 
   return (
-    <StyledCard
-    // onClick={() => {
-    //   dispatch(updateStock(symbol));
-    // }}
-    >
+    <StyledCard>
       <div>
         <span className="symbol">{symbol}</span>
         <span className="company">({companyName})</span>
