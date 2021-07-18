@@ -10,7 +10,7 @@
     A React - Redux - TypeScript application that allow users to sign up and create watchlists for stocks and view real time intraday and historical data. This project is using the <a href="https://iexcloud.io/">IEX Cloud Financial Data APIs</a> to access live and historical data on stocks. The <a href='https://github.com/XandraV/stock-market-tracker-backend'>backend</a> is built with Node.js using JSON Web Tokens to authenticate users and a Mongodb database to store data.
     <br />
     <br />
-    <a href="https://master.d2sepshwwzeglq.amplifyapp.com/">View Deployed App</a> 
+    <a href="https://master.dn1vt8xnffhrx.amplifyapp.com/">View Deployed App</a> 
   </p>
 </p>
 
